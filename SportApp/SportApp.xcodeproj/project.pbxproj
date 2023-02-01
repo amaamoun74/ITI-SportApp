@@ -101,14 +101,13 @@
 		E21CFC162989A820008B5276 /* SportApp */ = {
 			isa = PBXGroup;
 			children = (
-				E21CFC172989A820008B5276 /* AppDelegate.swift */,
-				E21CFC192989A820008B5276 /* SceneDelegate.swift */,
-				E21CFC1B2989A820008B5276 /* ViewController.swift */,
-				E21CFC1D2989A820008B5276 /* Main.storyboard */,
-				E21CFC232989A822008B5276 /* Assets.xcassets */,
-				E21CFC252989A822008B5276 /* LaunchScreen.storyboard */,
+				E2B3598A2989AAF100CAE96B /* Contract */,
+				E2B359872989AA7500CAE96B /* View */,
+				E2B359862989AA5D00CAE96B /* Utili */,
+				E2B359832989AA0800CAE96B /* DataService */,
+				E2B359822989A9ED00CAE96B /* Model */,
+				E2B359812989A9D800CAE96B /* ViewModel */,
 				E21CFC282989A822008B5276 /* Info.plist */,
-				E21CFC202989A820008B5276 /* SportApp.xcdatamodeld */,
 			);
 			path = SportApp;
 			sourceTree = "<group>";
@@ -128,6 +127,87 @@
 				E21CFC3D2989A823008B5276 /* SportAppUITestsLaunchTests.swift */,
 			);
 			path = SportAppUITests;
+			sourceTree = "<group>";
+		};
+		E2B359812989A9D800CAE96B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E2B359822989A9ED00CAE96B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E2B359832989AA0800CAE96B /* DataService */ = {
+			isa = PBXGroup;
+			children = (
+				E2B359852989AA2B00CAE96B /* ApiServices */,
+				E2B359842989AA1B00CAE96B /* DataChaching */,
+			);
+			path = DataService;
+			sourceTree = "<group>";
+		};
+		E2B359842989AA1B00CAE96B /* DataChaching */ = {
+			isa = PBXGroup;
+			children = (
+				E2B359892989AAB900CAE96B /* CoreDataEntity */,
+			);
+			path = DataChaching;
+			sourceTree = "<group>";
+		};
+		E2B359852989AA2B00CAE96B /* ApiServices */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ApiServices;
+			sourceTree = "<group>";
+		};
+		E2B359862989AA5D00CAE96B /* Utili */ = {
+			isa = PBXGroup;
+			children = (
+				E21CFC192989A820008B5276 /* SceneDelegate.swift */,
+				E21CFC172989A820008B5276 /* AppDelegate.swift */,
+				E21CFC232989A822008B5276 /* Assets.xcassets */,
+			);
+			path = Utili;
+			sourceTree = "<group>";
+		};
+		E2B359872989AA7500CAE96B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E21CFC1D2989A820008B5276 /* Main.storyboard */,
+				E21CFC252989A822008B5276 /* LaunchScreen.storyboard */,
+				E2B359882989AA8300CAE96B /* Controller */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E2B359882989AA8300CAE96B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E21CFC1B2989A820008B5276 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E2B359892989AAB900CAE96B /* CoreDataEntity */ = {
+			isa = PBXGroup;
+			children = (
+				E21CFC202989A820008B5276 /* SportApp.xcdatamodeld */,
+			);
+			path = CoreDataEntity;
+			sourceTree = "<group>";
+		};
+		E2B3598A2989AAF100CAE96B /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Contract;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

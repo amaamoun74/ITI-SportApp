@@ -130,6 +130,14 @@
             </objects>
             <point key="canvasLocation" x="2535" y="177"/>
         </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="xom-SO-XR7">
+            <objects>
+                <viewControllerPlaceholder id="vsg-r2-cvc" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TRl-Rz-SVB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3463" y="177"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="95A-nI-6OU">
             <objects>
@@ -211,13 +219,47 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t9g-c2-7Jn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3355" y="-213"/>
+            <point key="canvasLocation" x="3639" y="-478"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="agh-6d-13Z">
+            <objects>
+                <viewController id="ioU-Ft-dnv" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Gma-an-dOa">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gnL-6M-fol">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="P0C-qU-1e0"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gnL-6M-fol" firstAttribute="top" secondItem="P0C-qU-1e0" secondAttribute="top" id="LBe-ao-zNC"/>
+                            <constraint firstItem="gnL-6M-fol" firstAttribute="leading" secondItem="P0C-qU-1e0" secondAttribute="leading" id="ZpB-S9-bu4"/>
+                            <constraint firstItem="P0C-qU-1e0" firstAttribute="trailing" secondItem="gnL-6M-fol" secondAttribute="trailing" id="hkP-nK-lMg"/>
+                            <constraint firstItem="P0C-qU-1e0" firstAttribute="bottom" secondItem="gnL-6M-fol" secondAttribute="bottom" id="sCs-rL-wKn"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iHD-FS-M1b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4602" y="-478"/>
         </scene>
     </scenes>
     <resources>
         <image name="figure.disc.sports" catalog="system" width="128" height="108"/>
         <image name="folder.fill" catalog="system" width="128" height="96"/>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

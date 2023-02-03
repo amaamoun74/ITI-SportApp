@@ -136,7 +136,7 @@
                 <viewControllerPlaceholder id="vsg-r2-cvc" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TRl-Rz-SVB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2579" y="631"/>
+            <point key="canvasLocation" x="3463" y="177"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="95A-nI-6OU">

@@ -64,7 +64,7 @@
                                         <connections>
                                             <outlet property="SportName" destination="Cwk-1V-t6h" id="jis-j9-xnj"/>
                                             <outlet property="cellImage" destination="Zqn-Yh-oTv" id="pLZ-zC-eUW"/>
-                                            <segue destination="7XH-3z-QKj" kind="show" id="XHO-iq-6Fe"/>
+                                            <segue destination="vsg-r2-cvc" kind="show" id="ORt-lw-Fha"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -130,10 +130,12 @@
             </objects>
             <point key="canvasLocation" x="2535" y="177"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--leagueDetails-->
         <scene sceneID="xom-SO-XR7">
             <objects>
-                <viewControllerPlaceholder id="vsg-r2-cvc" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="SecondStoryboard" referencedIdentifier="leagueDetails" id="vsg-r2-cvc" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="MqJ-AV-Yds"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TRl-Rz-SVB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3463" y="177"/>
@@ -188,7 +190,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nZ6-Nn-nXE">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <color key="backgroundColor" red="0.094996270519999995" green="0.3203129475" blue="0.63911191379999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Eqv-UJ-CUJ">

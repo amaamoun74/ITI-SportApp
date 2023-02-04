@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Team
+class Team: Codable
 {
     var team_key:Int?
     var team_name:String?

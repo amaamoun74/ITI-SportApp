@@ -8,10 +8,10 @@
 import Foundation
 class SportModel {
     
-    var sportImage:String?
-    var sportTitle: String?
+    var sportImage:String
+    var sportTitle: String
     
-    init(sportImage: String? = nil, sportTitle: String? = nil) {
+    init(sportImage: String, sportTitle: String) {
         self.sportImage = sportImage
         self.sportTitle = sportTitle
     }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class AllLeagueResponse
+class AllLeagueResponse: Codable
 {
     var success: Int?
     var result :[League]?

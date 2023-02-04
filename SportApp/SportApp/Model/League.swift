@@ -6,7 +6,7 @@
 //
 
 import Foundation
-class League{
+class League: Codable{
     
     var league_key : Int?
     var league_name : String?
@@ -14,6 +14,5 @@ class League{
     var country_name : String?
     var league_logo : String?
     var country_logo : String?
-    
     
 }

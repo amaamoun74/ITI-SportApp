@@ -10,11 +10,15 @@ import UIKit
 class LeagueViewController: UIViewController{
     
     @IBOutlet weak var leagueTable: UITableView!
+    var leagueArray = [League]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configurationNibFile()
         leagueTable.delegate = self
         leagueTable.dataSource = self
+        getLeagues()
         // Do any additional setup after loading the view.
     }
     
@@ -38,13 +42,14 @@ extension LeagueViewController: UITableViewDelegate , UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return leagueArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:LeagueTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeagueTableViewCell
         
-        cell.cellTitle.text = "Primier League"
+        cell.cellTitle.text = leagueArray[indexPath.row].league_name
+        cell.cellImage.image = UIImage(named: "sport")
         return cell
     }
     
@@ -53,4 +58,25 @@ extension LeagueViewController: UITableViewDelegate , UITableViewDataSource {
         
     }
     
+}
+
+extension LeagueViewController {
+    
+    func getLeagues(){
+        
+        let allLeaguesViewodel = AllLeaguesViewodel()
+        allLeaguesViewodel.fetchData(endPoint: "football")
+        allLeaguesViewodel.bindingData = { leaguesResult, error in
+              if let leagues = leaguesResult {
+                  self.leagueArray = leagues.result ?? []
+                  DispatchQueue.main.async {
+                      self.leagueTable.reloadData()
+                  }
+              }
+              if let error = error {
+                  print(error.localizedDescription)
+              }
+          }
+        
+    }
 }

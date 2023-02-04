@@ -64,7 +64,7 @@
                                         <connections>
                                             <outlet property="SportName" destination="Cwk-1V-t6h" id="jis-j9-xnj"/>
                                             <outlet property="cellImage" destination="Zqn-Yh-oTv" id="pLZ-zC-eUW"/>
-                                            <segue destination="vsg-r2-cvc" kind="show" id="ORt-lw-Fha"/>
+                                            <segue destination="vsg-r2-cvc" kind="show" id="VQI-Mv-Gll"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

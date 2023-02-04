@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Player {
+class Player: Codable {
     
     var player_key : Double?
     var player_name : String?

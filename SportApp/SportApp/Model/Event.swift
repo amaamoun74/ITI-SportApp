@@ -6,7 +6,7 @@
 //
 
 import Foundation
-class Event {
+class Event: Codable {
     var event_key :Double?
     var event_date:String?
     var event_time:String?

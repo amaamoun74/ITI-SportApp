@@ -6,7 +6,7 @@
 //
 
 import Foundation
-class EventResponse{
+class EventResponse: Codable{
     var success : Int?
     var result : [Event]?
     

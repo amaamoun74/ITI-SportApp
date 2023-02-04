@@ -15,5 +15,4 @@ class League{
     var league_logo : String?
     var country_logo : String?
     
-    
 }

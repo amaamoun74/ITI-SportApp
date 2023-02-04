@@ -10,6 +10,8 @@
 		4F32E699298D2A4F00AAEC79 /* SecondStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F32E698298D2A4F00AAEC79 /* SecondStoryboard.storyboard */; };
 		4F32E69B298D2D9400AAEC79 /* LeagueDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F32E69A298D2D9400AAEC79 /* LeagueDetailsVC.swift */; };
 		4F32E69D298D3D5600AAEC79 /* TeamDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F32E69C298D3D5600AAEC79 /* TeamDetailsVC.swift */; };
+		4F3E9E0D298E60CA005546FF /* TeamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3E9E0C298E60CA005546FF /* TeamCollectionViewCell.swift */; };
+		4F918054298E3E5B00768259 /* LeagueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F918053298E3E5B00768259 /* LeagueCollectionViewCell.swift */; };
 		E20FB8072989E8EF00AF8ED0 /* LeagueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20FB8052989E8EF00AF8ED0 /* LeagueTableViewCell.swift */; };
 		E20FB8082989E8EF00AF8ED0 /* LeagueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E20FB8062989E8EF00AF8ED0 /* LeagueTableViewCell.xib */; };
 		E21CFC182989A820008B5276 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21CFC172989A820008B5276 /* AppDelegate.swift */; };
@@ -57,6 +59,8 @@
 		4F32E698298D2A4F00AAEC79 /* SecondStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SecondStoryboard.storyboard; sourceTree = "<group>"; };
 		4F32E69A298D2D9400AAEC79 /* LeagueDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueDetailsVC.swift; sourceTree = "<group>"; };
 		4F32E69C298D3D5600AAEC79 /* TeamDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsVC.swift; sourceTree = "<group>"; };
+		4F3E9E0C298E60CA005546FF /* TeamCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCollectionViewCell.swift; sourceTree = "<group>"; };
+		4F918053298E3E5B00768259 /* LeagueCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueCollectionViewCell.swift; sourceTree = "<group>"; };
 		E20FB8052989E8EF00AF8ED0 /* LeagueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueTableViewCell.swift; sourceTree = "<group>"; };
 		E20FB8062989E8EF00AF8ED0 /* LeagueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeagueTableViewCell.xib; sourceTree = "<group>"; };
 		E21CFC142989A820008B5276 /* SportApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,8 +128,10 @@
 		E21CFC0B2989A81F008B5276 = {
 			isa = PBXGroup;
 			children = (
+				4F918053298E3E5B00768259 /* LeagueCollectionViewCell.swift */,
 				4F32E69A298D2D9400AAEC79 /* LeagueDetailsVC.swift */,
 				4F32E698298D2A4F00AAEC79 /* SecondStoryboard.storyboard */,
+				4F3E9E0C298E60CA005546FF /* TeamCollectionViewCell.swift */,
 				4F32E69C298D3D5600AAEC79 /* TeamDetailsVC.swift */,
 				E21CFC162989A820008B5276 /* SportApp */,
 				E21CFC302989A823008B5276 /* SportAppTests */,
@@ -456,6 +462,7 @@
 				E2DE913D298D9F73004BF14D /* EventResponse.swift in Sources */,
 				E21CFC1C2989A820008B5276 /* SportsViewController.swift in Sources */,
 				E2DE9139298D9C89004BF14D /* Coach.swift in Sources */,
+				4F3E9E0D298E60CA005546FF /* TeamCollectionViewCell.swift in Sources */,
 				E2DE913F298DA05B004BF14D /* Event.swift in Sources */,
 				E2CF288B298BB1EA002EDFAE /* SportsCollectionViewCell.swift in Sources */,
 				E20FB8072989E8EF00AF8ED0 /* LeagueTableViewCell.swift in Sources */,
@@ -469,6 +476,7 @@
 				E2DE9131298D98F1004BF14D /* League.swift in Sources */,
 				E2DE9137298D9C70004BF14D /* Player.swift in Sources */,
 				E21CFC1A2989A820008B5276 /* SceneDelegate.swift in Sources */,
+				4F918054298E3E5B00768259 /* LeagueCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

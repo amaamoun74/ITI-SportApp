@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Coach
+class Coach: Codable
 {
     var coach_name :String?
     var coach_country :String?

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TeamDetailsResponse {
+class TeamDetailsResponse : Codable{
     
     var success : Int?
     var result : [Team]?

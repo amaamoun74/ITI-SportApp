@@ -6,7 +6,7 @@
 //
 
 import Foundation
-class League{
+class League: Codable{
     
     var league_key : Int?
     var league_name : String?

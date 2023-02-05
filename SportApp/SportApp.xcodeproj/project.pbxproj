@@ -503,11 +503,8 @@
 				E2DE9131298D98F1004BF14D /* League.swift in Sources */,
 				E2DE9137298D9C70004BF14D /* Player.swift in Sources */,
 				E21CFC1A2989A820008B5276 /* SceneDelegate.swift in Sources */,
-<<<<<<< HEAD
 				E2F76D20298DDCAB00C6C531 /* AllLeaguesViewModel.swift in Sources */,
-=======
 				4F918054298E3E5B00768259 /* LeagueCollectionViewCell.swift in Sources */,
->>>>>>> 4e229bad2b7121241bad100a0e910634d24d6d0d
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

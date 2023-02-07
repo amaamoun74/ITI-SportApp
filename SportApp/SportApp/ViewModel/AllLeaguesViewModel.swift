@@ -9,7 +9,7 @@ import Foundation
 
 class AllLeaguesViewodel {
     
-    var allLeaguesArray:AllLeagueResponse? {
+    var allLeaguesArray:JsonResponse<League>? {
         didSet {
             bindingData(allLeaguesArray,nil)
         }
@@ -20,7 +20,7 @@ class AllLeaguesViewodel {
         }
     }
     let apiService: ApiService
-    var bindingData: ((AllLeagueResponse?,Error?) -> Void) = {_, _ in }
+    var bindingData: ((JsonResponse<League>?,Error?) -> Void) = {_, _ in }
     init(apiService: ApiService = NetworkManager()) {
         self.apiService = apiService
     }
@@ -35,4 +35,5 @@ class AllLeaguesViewodel {
         }
     }
         
+    
 }

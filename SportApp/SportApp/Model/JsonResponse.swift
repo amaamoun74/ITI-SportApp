@@ -7,8 +7,8 @@
 
 import Foundation
 
-class AllLeagueResponse: Codable
+class JsonResponse<T:Codable>: Codable
 {
     var success: Int?
-    var result :[League]?
+    var result :[T]?
 }

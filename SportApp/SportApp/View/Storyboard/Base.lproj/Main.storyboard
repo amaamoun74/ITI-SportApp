@@ -64,7 +64,7 @@
                                         <connections>
                                             <outlet property="SportName" destination="Cwk-1V-t6h" id="jis-j9-xnj"/>
                                             <outlet property="cellImage" destination="Zqn-Yh-oTv" id="pLZ-zC-eUW"/>
-                                            <segue destination="vsg-r2-cvc" kind="show" id="VQI-Mv-Gll"/>
+                                            <segue destination="7XH-3z-QKj" kind="show" identifier="AllLeagues1" id="zbh-te-vLh"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -92,7 +92,7 @@
         <!--Favourite-->
         <scene sceneID="qyF-9n-LQf">
             <objects>
-                <viewController id="xLL-jO-LNX" customClass="SavedLeagueViewController" customModule="SportApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xLL-jO-LNX" customClass="FavouriteLeaguesViewController" customModule="SportApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EJb-2G-RXf">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -122,6 +122,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Favourite" image="heart.fill" catalog="system" id="Qfr-Ga-M2h"/>
+                    <navigationItem key="navigationItem" id="B1X-dw-3zQ"/>
                     <connections>
                         <outlet property="savedLeagueTable" destination="wci-xO-nmb" id="Bxh-hK-Srp"/>
                     </connections>
@@ -184,13 +185,13 @@
         <!--League View Controller-->
         <scene sceneID="FNA-KO-mhB">
             <objects>
-                <viewController id="7XH-3z-QKj" customClass="LeagueViewController" customModule="SportApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AllLeagues" id="7XH-3z-QKj" customClass="LeagueViewController" customModule="SportApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MPR-ZQ-OV3">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nZ6-Nn-nXE">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" red="0.094996270519999995" green="0.3203129475" blue="0.63911191379999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Eqv-UJ-CUJ">
@@ -200,6 +201,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="vsg-r2-cvc" kind="show" identifier="webView" id="FmG-Pj-9aY"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -249,6 +253,7 @@
                             <constraint firstItem="P0C-qU-1e0" firstAttribute="bottom" secondItem="gnL-6M-fol" secondAttribute="bottom" id="sCs-rL-wKn"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Uwp-jR-cNY"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iHD-FS-M1b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

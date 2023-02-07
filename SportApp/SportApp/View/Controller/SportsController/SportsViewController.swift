@@ -44,7 +44,9 @@ extension ViewController {
         return cell
     }
 
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+    }
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {

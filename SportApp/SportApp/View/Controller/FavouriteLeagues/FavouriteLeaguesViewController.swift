@@ -7,15 +7,21 @@
 
 import UIKit
 
-class SavedLeagueViewController: UIViewController {
+class FavouriteLeaguesViewController: UIViewController {
 
     
     @IBOutlet weak var savedLeagueTable: UITableView!
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var savedLeagueArray = [League]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        configurationNibFile()
         savedLeagueTable.delegate = self
         savedLeagueTable.dataSource = self
+        configurationNibFile()
+
+        
+        getSavedLeagues()
         
     }
     func configurationNibFile(){
@@ -26,7 +32,7 @@ class SavedLeagueViewController: UIViewController {
     }
 }
 
-extension SavedLeagueViewController: UITableViewDelegate , UITableViewDataSource {
+extension FavouriteLeaguesViewController: UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
      return "Saved Leagues"
@@ -37,13 +43,14 @@ extension SavedLeagueViewController: UITableViewDelegate , UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return savedLeagueArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:LeagueTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeagueTableViewCell
         
-        cell.cellTitle.text = "Primier League"
+        cell.cellTitle.text = savedLeagueArray[indexPath.row].league_name
+        
         return cell
     }
     
@@ -52,4 +59,24 @@ extension SavedLeagueViewController: UITableViewDelegate , UITableViewDataSource
         
     }
     
+}
+
+extension FavouriteLeaguesViewController {
+    func getSavedLeagues(){
+        
+        let favouriteViewModel = FavouriteLeaguesVM()
+        favouriteViewModel.fetchSavedLeagues(appDelegate: self.appDelegate)
+        favouriteViewModel.bindingData = {result , error in
+              if let savedLeagues = result {
+                  self.savedLeagueArray = savedLeagues
+                  DispatchQueue.main.async {
+                      self.savedLeagueTable.reloadData()
+                  }
+              }
+              if let error = error {
+                  print(error.localizedDescription)
+              }
+          }
+        
+    }
 }

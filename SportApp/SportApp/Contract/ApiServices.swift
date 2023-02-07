@@ -7,5 +7,5 @@
 
 import Foundation
 protocol ApiService {
-    func getAllLeagues(endPoint: String, completion: @escaping ((AllLeagueResponse?, Error?) -> Void))
+    func getAllLeagues(endPoint: String, completion: @escaping ((JsonResponse<League>?, Error?) -> Void))
 }

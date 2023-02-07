@@ -7,11 +7,11 @@
 
 import Foundation
 class NetworkManager: ApiService {
-    func getAllLeagues(endPoint: String, completion: @escaping ((AllLeagueResponse?, Error?) -> Void)) {
+    func getAllLeagues(endPoint: String, completion: @escaping ((JsonResponse<League>?, Error?) -> Void)) {
         if let  url = URL(string: UrlServices(endPoint: endPoint).url) {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if let data = data {
-                    let decodedArray: AllLeagueResponse = convertFromJson(data: data) ?? AllLeagueResponse()
+                    let decodedArray: JsonResponse<League> = convertFromJson(data: data) ?? JsonResponse<League>()
                     completion(decodedArray,nil)
                 }
                 if let error = error {

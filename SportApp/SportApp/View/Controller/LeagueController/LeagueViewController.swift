@@ -58,6 +58,10 @@ extension LeagueViewController: UITableViewDelegate , UITableViewDataSource {
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigateToNextScene()
+    }
+    
 }
 
 extension LeagueViewController {
@@ -79,4 +83,13 @@ extension LeagueViewController {
           }
         
     }
+}
+
+extension LeagueViewController: CustomViewDelegate
+{
+    func navigateToNextScene() {
+        performSegue(withIdentifier: "webView", sender: self)
+    }
+    
+    
 }

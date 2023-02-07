@@ -12,6 +12,9 @@ class LeagueTableViewCell: UITableViewCell {
     @IBOutlet weak var cellIcon: UIButton!
     @IBOutlet weak var cellTitle: UILabel!
     @IBOutlet weak var cellImage: UIImageView!
+    
+    weak var customDelegate: (CustomViewDelegate)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         cellImage.layer.cornerRadius = cellImage.frame.size.width / 2
@@ -26,4 +29,7 @@ class LeagueTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func navigate(_ sender: Any) {
+        customDelegate?.navigateToNextScene()
+    }
 }

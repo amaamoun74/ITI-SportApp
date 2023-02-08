@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Reachability
 class LeagueViewController: UIViewController{
     
     @IBOutlet weak var leagueTable: UITableView!
@@ -18,8 +18,7 @@ class LeagueViewController: UIViewController{
         configurationNibFile()
         leagueTable.delegate = self
         leagueTable.dataSource = self
-        getLeagues()
-        // Do any additional setup after loading the view.
+        handleDataFetching()
     }
     
     func configurationNibFile(){
@@ -28,7 +27,6 @@ class LeagueViewController: UIViewController{
         
         leagueTable.register(nib, forCellReuseIdentifier: "cell")
     }
-    
 }
 
 extension LeagueViewController: UITableViewDelegate , UITableViewDataSource {
@@ -49,7 +47,9 @@ extension LeagueViewController: UITableViewDelegate , UITableViewDataSource {
         let cell:LeagueTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeagueTableViewCell
         
         cell.cellTitle.text = leagueArray[indexPath.row].league_name
-        cell.cellImage.image = UIImage(named: "sport")
+        //cell.cellImage.image = UIImage(named: "sport")
+        let url = URL(string: (leagueArray[indexPath.row].league_logo ?? "https://m.media-amazon.com/images/M/MV5BZDc4MzVkNzYtZTRiZC00ODYwLWJjZmMtMDIyNjQ1M2M1OGM2XkEyXkFqcGdeQXVyMDA4NzMyOA@@._V1_Ratio0.6716_AL_.jpg" ))
+        cell.cellImage?.kf.setImage(with: url)
         return cell
     }
     
@@ -65,6 +65,15 @@ extension LeagueViewController: UITableViewDelegate , UITableViewDataSource {
 }
 
 extension LeagueViewController {
+    
+    
+    func checkNetworkAvilability() -> Bool{
+        if Reachability.forInternetConnection().isReachable(){
+            return true }
+        else {
+            return false
+        }
+    }
     
     func getLeagues(){
         
@@ -91,5 +100,25 @@ extension LeagueViewController: CustomViewDelegate
         performSegue(withIdentifier: "webView", sender: self)
     }
     
-    
+    func showErrorAlert(){
+        let alert : UIAlertController = UIAlertController(title:"Add" , message: "No network connection !", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "try again", style: .default , handler: { action in
+            self.handleDataFetching()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "cancel", style: .cancel , handler: { action in
+        }))
+        
+        self.present(alert, animated: true , completion: nil )
+    }
+    private func handleDataFetching(){
+        if checkNetworkAvilability() {
+            getLeagues()
+        }
+        else
+        {
+            showErrorAlert()
+        }
+    }
 }

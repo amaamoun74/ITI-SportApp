@@ -20,7 +20,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5LL-uS-dhj">
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" red="0.083905851889999994" green="0.27858444900000001" blue="0.54397837319999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="5" id="b9c-jf-R0c">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="5" id="b9c-jf-R0c">
                                     <size key="itemSize" width="181" height="160"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -60,7 +60,6 @@
                                                 </mask>
                                             </variation>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="181" height="160"/>
                                         <connections>
                                             <outlet property="SportName" destination="Cwk-1V-t6h" id="jis-j9-xnj"/>
                                             <outlet property="cellImage" destination="Zqn-Yh-oTv" id="pLZ-zC-eUW"/>
@@ -108,6 +107,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="vsg-r2-cvc" kind="show" identifier="secondStoryboard" id="txs-x1-RsV"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -260,6 +262,9 @@
             <point key="canvasLocation" x="4602" y="-478"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="FmG-Pj-9aY"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="figure.disc.sports" catalog="system" width="128" height="108"/>
         <image name="folder.fill" catalog="system" width="128" height="96"/>

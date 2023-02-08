@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Reachability
+import Kingfisher
 
 class FavouriteLeaguesViewController: UIViewController {
 
@@ -19,8 +21,6 @@ class FavouriteLeaguesViewController: UIViewController {
         savedLeagueTable.delegate = self
         savedLeagueTable.dataSource = self
         configurationNibFile()
-
-        
         getSavedLeagues()
         
     }
@@ -50,7 +50,8 @@ extension FavouriteLeaguesViewController: UITableViewDelegate , UITableViewDataS
         let cell:LeagueTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeagueTableViewCell
         
         cell.cellTitle.text = savedLeagueArray[indexPath.row].league_name
-        
+        let url = URL(string: (savedLeagueArray[indexPath.row].league_logo ?? "https://m.media-amazon.com/images/M/MV5BZDc4MzVkNzYtZTRiZC00ODYwLWJjZmMtMDIyNjQ1M2M1OGM2XkEyXkFqcGdeQXVyMDA4NzMyOA@@._V1_Ratio0.6716_AL_.jpg" ))
+        cell.cellImage?.kf.setImage(with: url)
         return cell
     }
     
@@ -59,6 +60,9 @@ extension FavouriteLeaguesViewController: UITableViewDelegate , UITableViewDataS
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        validateNavigation()
+    }
 }
 
 extension FavouriteLeaguesViewController {
@@ -79,4 +83,34 @@ extension FavouriteLeaguesViewController {
           }
         
     }
+}
+extension FavouriteLeaguesViewController: CustomViewDelegate{
+    func navigateToNextScene() {
+        performSegue(withIdentifier: "secondStoryboard", sender: self)
+    }
+    
+    private func showErrorAlert(){
+        let alert : UIAlertController = UIAlertController(title:"Add" , message: "No network connection !", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "try again", style: .default , handler: { action in
+            self.validateNavigation()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "cancel", style: .cancel , handler: { action in
+        }))
+        
+        self.present(alert, animated: true , completion: nil )
+    }
+    
+    
+    func validateNavigation(){
+        if Reachability.forInternetConnection().isReachable()
+            {
+                self.navigateToNextScene()
+                
+            }
+            else{
+                showErrorAlert()
+            }
+        }
 }

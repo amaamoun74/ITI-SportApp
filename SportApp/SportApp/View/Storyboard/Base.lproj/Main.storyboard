@@ -146,7 +146,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="95A-nI-6OU">
             <objects>
-                <tabBarController storyboardIdentifier="main" id="fK4-VE-3dH" sceneMemberID="viewController">
+                <tabBarController id="fK4-VE-3dH" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="ghc-gi-WmE"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fb5-q5-K5N">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
@@ -165,7 +165,7 @@
         <!--Navigation Controller-->
         <scene sceneID="3oj-Sq-OzP">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TRO-lQ-e0d" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="splashScreen" automaticallyAdjustsScrollViewInsets="NO" id="TRO-lQ-e0d" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZAo-pc-ofl">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -184,7 +184,7 @@
             </objects>
             <point key="canvasLocation" x="358" y="-240"/>
         </scene>
-        <!--League View Controller-->
+        <!--Favourite-->
         <scene sceneID="FNA-KO-mhB">
             <objects>
                 <viewController storyboardIdentifier="AllLeagues" id="7XH-3z-QKj" customClass="LeagueViewController" customModule="SportApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -220,7 +220,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="Fgs-KQ-BmB"/>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="Sl7-zW-y8w"/>
+                    <navigationItem key="navigationItem" title="Favourite" largeTitleDisplayMode="always" id="Sl7-zW-y8w"/>
                     <connections>
                         <outlet property="leagueTable" destination="nZ6-Nn-nXE" id="kxe-UK-HV7"/>
                     </connections>
@@ -229,10 +229,10 @@
             </objects>
             <point key="canvasLocation" x="3639" y="-478"/>
         </scene>
-        <!--View Controller-->
+        <!--Splash View Controller-->
         <scene sceneID="agh-6d-13Z">
             <objects>
-                <viewController id="ioU-Ft-dnv" sceneMemberID="viewController">
+                <viewController id="ioU-Ft-dnv" customClass="SplashViewController" customModule="SportApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gma-an-dOa">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -19,7 +19,7 @@ class LeagueTableViewCell: UITableViewCell {
         super.awakeFromNib()
         cellImage.layer.cornerRadius = cellImage.frame.size.width / 2
         cellImage.clipsToBounds = true
-
+        
         // Initialization code
     }
 

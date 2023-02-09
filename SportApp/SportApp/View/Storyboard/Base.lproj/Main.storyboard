@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TRO-lQ-e0d">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ioU-Ft-dnv">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -146,7 +146,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="95A-nI-6OU">
             <objects>
-                <tabBarController id="fK4-VE-3dH" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="main" id="fK4-VE-3dH" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="ghc-gi-WmE"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fb5-q5-K5N">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
@@ -177,12 +177,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="fK4-VE-3dH" kind="relationship" relationship="rootViewController" id="20F-bB-uo8"/>
+                        <segue destination="fK4-VE-3dH" kind="relationship" relationship="rootViewController" id="8vT-jV-rv8"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7bw-BB-uwR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="712" y="-240"/>
+            <point key="canvasLocation" x="358" y="-240"/>
         </scene>
         <!--League View Controller-->
         <scene sceneID="FNA-KO-mhB">
@@ -236,30 +236,14 @@
                     <view key="view" contentMode="scaleToFill" id="Gma-an-dOa">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gnL-6M-fol">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="P0C-qU-1e0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="gnL-6M-fol" firstAttribute="top" secondItem="P0C-qU-1e0" secondAttribute="top" id="LBe-ao-zNC"/>
-                            <constraint firstItem="gnL-6M-fol" firstAttribute="leading" secondItem="P0C-qU-1e0" secondAttribute="leading" id="ZpB-S9-bu4"/>
-                            <constraint firstItem="P0C-qU-1e0" firstAttribute="trailing" secondItem="gnL-6M-fol" secondAttribute="trailing" id="hkP-nK-lMg"/>
-                            <constraint firstItem="P0C-qU-1e0" firstAttribute="bottom" secondItem="gnL-6M-fol" secondAttribute="bottom" id="sCs-rL-wKn"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Uwp-jR-cNY"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iHD-FS-M1b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4602" y="-478"/>
+            <point key="canvasLocation" x="-582" y="-240"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

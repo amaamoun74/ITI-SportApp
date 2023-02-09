@@ -26,6 +26,7 @@
 		E21CFC322989A823008B5276 /* SportAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21CFC312989A823008B5276 /* SportAppTests.swift */; };
 		E21CFC3C2989A823008B5276 /* SportAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21CFC3B2989A823008B5276 /* SportAppUITests.swift */; };
 		E21CFC3E2989A823008B5276 /* SportAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21CFC3D2989A823008B5276 /* SportAppUITestsLaunchTests.swift */; };
+		E23354B42993C88B008ED0CE /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23354B32993C88B008ED0CE /* Time.swift */; };
 		E265724C298F6ABF00DE4BDD /* IDataCaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = E265724B298F6ABF00DE4BDD /* IDataCaching.swift */; };
 		E265724F298F6B3000DE4BDD /* DataCaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = E265724E298F6B3000DE4BDD /* DataCaching.swift */; };
 		E2657251299004A100DE4BDD /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2657250299004A100DE4BDD /* DataManager.swift */; };
@@ -161,7 +162,6 @@
 				1430B403AC415CA4490A99C6 /* Pods-SportAppTests.debug.xcconfig */,
 				04D16AC4540B651FFBD507A6 /* Pods-SportAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -398,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				E2F76D22298DDE0000C6C531 /* JsonDecoder.swift */,
+				E23354B32993C88B008ED0CE /* Time.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -663,6 +664,7 @@
 				E2DE913B298D9C9D004BF14D /* Team.swift in Sources */,
 				E21CFC182989A820008B5276 /* AppDelegate.swift in Sources */,
 				E2DE9133298D9A2F004BF14D /* JsonResponse.swift in Sources */,
+				E23354B42993C88B008ED0CE /* Time.swift in Sources */,
 				4F32E69B298D2D9400AAEC79 /* LeagueDetailsVC.swift in Sources */,
 				E2F76D23298DDE0000C6C531 /* JsonDecoder.swift in Sources */,
 				E26572532990072300DE4BDD /* FavouriteLeaguesVM.swift in Sources */,

@@ -24,7 +24,7 @@ class SplashViewController: UIViewController {
 
         func navigationToNextScene(){
             DispatchQueue.main.asyncAfter(deadline: .now()+3){
-                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "ViewController")
+                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "splashScreen")
                 vc.modalPresentationStyle = .fullScreen
                 self.present(vc, animated: true)
             }

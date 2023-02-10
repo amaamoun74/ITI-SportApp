@@ -37,5 +37,15 @@ class FavouriteLeaguesVM {
         }
     }
     
+    func deleteLeagueItemFromFavourites (appDeleget : AppDelegate , leagueItem: League)
+    {
+        dataCaching.deleteLeagueFromFavourites(appDelegate: appDeleget, item: leagueItem) { errorMsg in
+            guard let error = errorMsg else {
+                return
+            }
+            self.error = error
+            
+        }
+    }
     
 }

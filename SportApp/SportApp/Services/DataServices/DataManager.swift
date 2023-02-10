@@ -14,7 +14,10 @@ class DataManager:IDataCaching {
         completion(dbManger.fetchSavedLeagues(appDelegate: appDelegate), "Fetching Saved Leagues Error" as? Error)
     }
     
-  
+    func deleteLeagueFromFavourites(appDelegate: AppDelegate, item: League , completion: (Error?) -> Void){
+        completion("Fetching Saved Leagues Error" as? Error)
+
+    }
     
     
     

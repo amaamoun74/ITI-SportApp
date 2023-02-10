@@ -29,9 +29,9 @@ class LeagueViewController: UIViewController{
     }
 }
 
-extension LeagueViewController: UITableViewDelegate , UITableViewDataSource {
+extension LeagueViewController: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "All Leagues"
     }
     
@@ -53,6 +53,9 @@ extension LeagueViewController: UITableViewDelegate , UITableViewDataSource {
         return cell
     }
     
+}
+
+extension LeagueViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
         
@@ -61,12 +64,9 @@ extension LeagueViewController: UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         navigateToNextScene()
     }
-    
 }
 
 extension LeagueViewController {
-    
-    
     func checkNetworkAvilability() -> Bool{
         if Reachability.forInternetConnection().isReachable(){
             return true }
@@ -76,7 +76,6 @@ extension LeagueViewController {
     }
     
     func getLeagues(){
-        
         let allLeaguesViewodel = AllLeaguesViewodel()
         allLeaguesViewodel.fetchData(endPoint: "football")
         allLeaguesViewodel.bindingData = { leaguesResult, error in

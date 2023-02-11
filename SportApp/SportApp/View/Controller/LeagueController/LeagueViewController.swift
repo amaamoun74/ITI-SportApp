@@ -1,5 +1,5 @@
 //
-//  SavedLeagueViewController.swift
+//  LeagueViewController.swift
 //  SportApp
 //
 //  Created by ahmed on 02/02/2023.
@@ -7,37 +7,32 @@
 
 import UIKit
 import Reachability
-import Kingfisher
-
-class FavouriteLeaguesViewController: UIViewController {
-
+class LeagueViewController: UIViewController{
     
-    @IBOutlet weak var savedLeagueTable: UITableView!
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    var savedLeagueArray = [League]()
-
+    @IBOutlet weak var leagueTable: UITableView!
+    var leagueArray = [League]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        savedLeagueTable.delegate = self
-        savedLeagueTable.dataSource = self
         configurationNibFile()
-
-        
-        getSavedLeagues()
-        
+        leagueTable.delegate = self
+        leagueTable.dataSource = self
+        handleDataFetching()
     }
+    
     func configurationNibFile(){
         
         let nib = UINib(nibName: "LeagueTableViewCell", bundle: nil)
         
-        savedLeagueTable.register(nib, forCellReuseIdentifier: "cell")
+        leagueTable.register(nib, forCellReuseIdentifier: "cell")
     }
 }
 
-extension FavouriteLeaguesViewController: UITableViewDelegate , UITableViewDataSource {
+extension LeagueViewController: UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-     return "Saved Leagues"
+        return "All Leagues"
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -45,15 +40,15 @@ extension FavouriteLeaguesViewController: UITableViewDelegate , UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return savedLeagueArray.count
+        return leagueArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:LeagueTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeagueTableViewCell
         
-        cell.cellTitle.text = savedLeagueArray[indexPath.row].league_name
-        
-        let url = URL(string: (savedLeagueArray[indexPath.row].league_logo ?? "https://m.media-amazon.com/images/M/MV5BZDc4MzVkNzYtZTRiZC00ODYwLWJjZmMtMDIyNjQ1M2M1OGM2XkEyXkFqcGdeQXVyMDA4NzMyOA@@._V1_Ratio0.6716_AL_.jpg" ))
+        cell.cellTitle.text = leagueArray[indexPath.row].league_name
+        //cell.cellImage.image = UIImage(named: "sport")
+        let url = URL(string: (leagueArray[indexPath.row].league_logo ?? "https://m.media-amazon.com/images/M/MV5BZDc4MzVkNzYtZTRiZC00ODYwLWJjZmMtMDIyNjQ1M2M1OGM2XkEyXkFqcGdeQXVyMDA4NzMyOA@@._V1_Ratio0.6716_AL_.jpg" ))
         cell.cellImage?.kf.setImage(with: url)
         return cell
     }
@@ -64,20 +59,31 @@ extension FavouriteLeaguesViewController: UITableViewDelegate , UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        validateNavigation()
+        navigateToNextScene()
     }
+    
 }
 
-extension FavouriteLeaguesViewController {
-    func getSavedLeagues(){
+extension LeagueViewController {
+    
+    
+    func checkNetworkAvilability() -> Bool{
+        if Reachability.forInternetConnection().isReachable(){
+            return true }
+        else {
+            return false
+        }
+    }
+    
+    func getLeagues(){
         
-        let favouriteViewModel = FavouriteLeaguesVM()
-        favouriteViewModel.fetchSavedLeagues(appDelegate: self.appDelegate)
-        favouriteViewModel.bindingData = {result , error in
-              if let savedLeagues = result {
-                  self.savedLeagueArray = savedLeagues
+        let allLeaguesViewodel = AllLeaguesViewodel()
+        allLeaguesViewodel.fetchData(endPoint: "football")
+        allLeaguesViewodel.bindingData = { leaguesResult, error in
+              if let leagues = leaguesResult {
+                  self.leagueArray = leagues.result ?? []
                   DispatchQueue.main.async {
-                      self.savedLeagueTable.reloadData()
+                      self.leagueTable.reloadData()
                   }
               }
               if let error = error {
@@ -88,16 +94,17 @@ extension FavouriteLeaguesViewController {
     }
 }
 
-extension FavouriteLeaguesViewController: CustomViewDelegate{
+extension LeagueViewController: CustomViewDelegate
+{
     func navigateToNextScene() {
-        performSegue(withIdentifier: "secondStoryboard", sender: self)
+        performSegue(withIdentifier: "webView", sender: self)
     }
     
-    private func showErrorAlert(){
+    func showErrorAlert(){
         let alert : UIAlertController = UIAlertController(title:"Add" , message: "No network connection !", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "try again", style: .default , handler: { action in
-            self.validateNavigation()
+            self.handleDataFetching()
         }))
         
         alert.addAction(UIAlertAction(title: "cancel", style: .cancel , handler: { action in
@@ -105,16 +112,13 @@ extension FavouriteLeaguesViewController: CustomViewDelegate{
         
         self.present(alert, animated: true , completion: nil )
     }
-    
-    
-    func validateNavigation(){
-        if Reachability.forInternetConnection().isReachable()
-            {
-                self.navigateToNextScene()
-                
-            }
-            else{
-                showErrorAlert()
-            }
+    private func handleDataFetching(){
+        if checkNetworkAvilability() {
+            getLeagues()
         }
+        else
+        {
+            showErrorAlert()
+        }
+    }
 }

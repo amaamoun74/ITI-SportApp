@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="119" id="KGk-i7-Jjw" customClass="LeagueTableViewCell" customModule="SportApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="528" height="119"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="528" height="119"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Q6c-IN-aeM">
+                        <rect key="frame" x="10" y="11" width="99" height="97.666666666666671"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LEAGUENAME" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UyT-0H-8g4">
+                        <rect key="frame" x="129" y="47.666666666666657" width="211.33333333333337" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="229" id="JXI-ge-oL7"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="JXI-ge-oL7"/>
+                            </mask>
+                        </variation>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z78-KQ-wgM">
+                        <rect key="frame" x="356.33333333333331" y="42.333333333333343" width="155.66666666666669" height="34.666666666666657"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="arrow.up.right.video.fill" catalog="system"/>
+                        <connections>
+                            <action selector="navigate:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Oue-1H-va7"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" red="0.048161457759999998" green="0.17880004699999999" blue="0.37256352590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="Q6c-IN-aeM" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="40r-6e-St1"/>
+                    <constraint firstItem="Q6c-IN-aeM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10.000000000000002" id="69G-xZ-hHk"/>
+                    <constraint firstItem="UyT-0H-8g4" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.4" id="8eA-5g-iH7"/>
+                    <constraint firstItem="Q6c-IN-aeM" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="height" constant="-20" id="A3W-m1-6an"/>
+                    <constraint firstItem="Q6c-IN-aeM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="FGP-tA-03v"/>
+                    <constraint firstItem="z78-KQ-wgM" firstAttribute="leading" secondItem="UyT-0H-8g4" secondAttribute="trailing" constant="16" id="MaY-Ct-ZLC"/>
+                    <constraint firstItem="Q6c-IN-aeM" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Nvv-KB-Qu9"/>
+                    <constraint firstItem="Q6c-IN-aeM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="hpN-7t-T5x"/>
+                    <constraint firstItem="UyT-0H-8g4" firstAttribute="leading" secondItem="Q6c-IN-aeM" secondAttribute="trailing" constant="20" id="iKh-pt-QxV"/>
+                    <constraint firstItem="UyT-0H-8g4" firstAttribute="centerY" secondItem="Q6c-IN-aeM" secondAttribute="centerY" id="jH8-UI-Fn3"/>
+                    <constraint firstItem="Q6c-IN-aeM" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="lcG-rc-1fN"/>
+                    <constraint firstAttribute="trailing" secondItem="z78-KQ-wgM" secondAttribute="trailing" constant="16" id="mzF-At-oyl"/>
+                    <constraint firstItem="z78-KQ-wgM" firstAttribute="centerY" secondItem="UyT-0H-8g4" secondAttribute="centerY" id="nyU-OD-Law"/>
+                    <constraint firstItem="Q6c-IN-aeM" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" constant="-20" id="wPi-IF-6ZD"/>
+                    <constraint firstItem="Q6c-IN-aeM" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="x0k-s1-8vs"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="40r-6e-St1"/>
+                        <exclude reference="69G-xZ-hHk"/>
+                        <exclude reference="FGP-tA-03v"/>
+                        <exclude reference="lcG-rc-1fN"/>
+                        <exclude reference="x0k-s1-8vs"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cellIcon" destination="z78-KQ-wgM" id="uve-fR-NND"/>
+                <outlet property="cellImage" destination="Q6c-IN-aeM" id="H2A-zk-kFa"/>
+                <outlet property="cellTitle" destination="UyT-0H-8g4" id="1rW-87-Dqc"/>
+            </connections>
+            <point key="canvasLocation" x="429.00763358778624" y="38.380281690140848"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="arrow.up.right.video.fill" catalog="system" width="128" height="81"/>
+        <image name="square.and.arrow.up.circle.fill" catalog="system" width="128" height="123"/>
+    </resources>
+</document>

@@ -19,7 +19,9 @@ class LeagueTableViewCell: UITableViewCell {
         super.awakeFromNib()
         cellImage.layer.cornerRadius = cellImage.frame.size.width / 2
         cellImage.clipsToBounds = true
-        
+        cellImage.layer.masksToBounds = true
+        cellImage.layer.borderWidth = 1.5
+        cellImage.layer.borderColor = UIColor.white.cgColor
         // Initialization code
     }
 

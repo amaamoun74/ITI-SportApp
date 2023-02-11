@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegate , UICollectionViewDataSource {
     
-    private let sportArray : [SportModel] = [SportModel(sportImage: "sport", sportTitle: "Football"), SportModel(sportImage: "sport", sportTitle: "Basketball") , SportModel(sportImage: "sport", sportTitle: "tennis") , SportModel(sportImage: "sport", sportTitle: "crackit") , SportModel(sportImage: "sport", sportTitle: "American Football")]
+    private let sportArray : [SportModel] = [SportModel(sportImage: "football", sportTitle: "Football"), SportModel(sportImage: "basketball", sportTitle: "Basketball") , SportModel(sportImage: "tennis", sportTitle: "Tennis") , SportModel(sportImage: "cricket", sportTitle: "Cricket") , SportModel(sportImage: "americanFootball", sportTitle: "American Football") ,SportModel(sportImage: "hockey", sportTitle: "Hockey") , SportModel(sportImage: "baseball", sportTitle: "Baseball")]
     @IBOutlet weak var sportsCollection: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,7 @@ extension ViewController {
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (UIScreen.main.bounds.size.width/2), height: (UIScreen.main.bounds.size.width/2))
+        return CGSize(width: (UIScreen.main.bounds.size.width/2.1), height: (UIScreen.main.bounds.size.width/2))
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
       return 15 // Keep whatever fits for you

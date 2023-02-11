@@ -113,7 +113,6 @@ extension FavouriteLeaguesViewController {
             print(error.localizedDescription)
         }
     }
-
     private func showSuccessSnakbar(msg : String, index: Int){
         let snackbar = TTGSnackbar(
             message: msg,

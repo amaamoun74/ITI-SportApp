@@ -58,6 +58,9 @@ extension LeagueViewController: UITableViewDataSource {
         cell.cellTitle.text = paginationLeagues[indexPath.row].league_name
         //cell.cellImage.image = UIImage(named: "sport")
         if let stringUrl = paginationLeagues[indexPath.row].league_logo {
+          /*  DispatchQueue.global().async {
+                cell.cellImage.load(urlString: stringUrl)
+            }*/
             let url = URL(string: stringUrl)
             cell.cellImage?.kf.setImage(with: url)
         }
@@ -112,8 +115,8 @@ extension LeagueViewController {
     }
     
     func getLeagues(){
-        
-        allLeaguesViewodel.fetchData(endPoint: "football")
+        let endpoint = UserDefaults.standard.string(forKey: Constants.sharedInstance.ENDPOINT_KEY) ?? ""
+        allLeaguesViewodel.fetchData(endPoint: endpoint)
         allLeaguesViewodel.bindingData = { leaguesResult, error in
             if let leagues = leaguesResult {
                 self.leagueArray = leagues.result ?? []

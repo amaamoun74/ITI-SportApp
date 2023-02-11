@@ -6,10 +6,10 @@
 //
 
 import UIKit
-
+import TTGSnackbar
 class ViewController: UIViewController, UICollectionViewDelegate , UICollectionViewDataSource {
     
-    private let sportArray : [SportModel] = [SportModel(sportImage: "football", sportTitle: "Football"), SportModel(sportImage: "basketball", sportTitle: "Basketball") , SportModel(sportImage: "tennis", sportTitle: "Tennis") , SportModel(sportImage: "cricket", sportTitle: "Cricket") , SportModel(sportImage: "americanFootball", sportTitle: "American Football") ,SportModel(sportImage: "hockey", sportTitle: "Hockey") , SportModel(sportImage: "baseball", sportTitle: "Baseball")]
+    private var sportArray : [SportModel] = [SportModel]()
     @IBOutlet weak var sportsCollection: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +17,15 @@ class ViewController: UIViewController, UICollectionViewDelegate , UICollectionV
         sportsCollection.delegate = self
         sportsCollection.dataSource = self
         self.navigationItem.title = "Sports"
+        getSports()
+    }
+    func getSports(){
+        let sportVM = SportViewModel()
+        sportVM.getSportList()
+            self.sportArray = sportVM.sportList ?? []
+            DispatchQueue.main.async {
+                self.sportsCollection.reloadData()
+            }
     }
 }
 
@@ -45,13 +54,37 @@ extension ViewController {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        if sportArray[indexPath.row].sportImage == "football" || sportArray[indexPath.row].sportImage == "basketball" || sportArray[indexPath.row].sportImage == "tennis" || sportArray[indexPath.row].sportImage == "cricket"
+        {
+            UserDefaults.standard.set(sportArray[indexPath.row].sportImage , forKey: Constants.sharedInstance.ENDPOINT_KEY)
+            navigateToNextScene()
+        }
+        else
+        {
+            showSnakbar(msg: "sorry can't open \(sportArray[indexPath.row].sportTitle)")
+        }
+     
+    }
+    private func showSnakbar(msg : String){
+        let snackbar = TTGSnackbar(
+            message: msg,
+            duration: .middle
+        )
+        snackbar.actionTextColor = UIColor.blue
+        snackbar.borderColor = UIColor.black
+        snackbar.messageTextColor = UIColor.white
+        snackbar.show()
+    }
+    
+    private func navigateToNextScene(){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AllLeagues")
+        navigationController?.pushViewController(vc!, animated: true)
     }
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (UIScreen.main.bounds.size.width/2.1), height: (UIScreen.main.bounds.size.width/2))
+        return CGSize(width: (UIScreen.main.bounds.size.width/2.1), height: (UIScreen.main.bounds.size.width/3))
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
       return 15 // Keep whatever fits for you

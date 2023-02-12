@@ -143,5 +143,6 @@ class LeagueDetailsVC: UIViewController, UICollectionViewDelegate, UICollectionV
     }
 
    
+    
 
 }

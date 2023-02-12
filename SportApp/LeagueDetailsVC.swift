@@ -51,11 +51,11 @@ class LeagueDetailsVC: UIViewController, UICollectionViewDelegate, UICollectionV
         upcomingEventsViewModel = EventsViewModel()
         latestResultsViewModel = EventsViewModel()
         self.upcomingEventsViewModel?.getEvents(startDate: "2023-01-18", endDate: "2024-01-25")
-        self.upcomingEventsViewModel?.bindResultToEvents = { () in }
+        self.upcomingEventsViewModel?.bindResultToEvents = { () in         self.workingWithDispatchGroup()
+}
         self.latestResultsViewModel?.getEvents(startDate:  "2022-01-18", endDate: "2023-01-25")
-        self.latestResultsViewModel?.bindResultToEvents = { () in        }
-        self.workingWithDispatchGroup()
-
+        self.latestResultsViewModel?.bindResultToEvents = { () in            self.workingWithDispatchGroup()
+    }
         // self.navigationController?.navigationBar.backgroundColor = UIColor(named: "Background")
     }
     
@@ -104,7 +104,7 @@ class LeagueDetailsVC: UIViewController, UICollectionViewDelegate, UICollectionV
         if (collectionView == teamsCollectionview)
         {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "teamsCell", for: indexPath) as! LeagueCollectionViewCell
-            cell.teamImage.kf.setImage(with: URL(string: upcomingEventsList[indexPath.row].home_team_logo ?? " "),placeholder: UIImage(named: "P"))
+            cell.teamImage.kf.setImage(with: URL(string: teamsList[indexPath.row].home_team_logo ?? " "),placeholder: UIImage(named: "P"))
             cell.teamImage.clipsToBounds = true
             cell.teamImage.layer.cornerRadius = cell.teamImage.frame.size.width / 2
             return cell
@@ -183,23 +183,26 @@ extension LeagueDetailsVC
         let group = DispatchGroup()
         
         group.enter()
-             self.teamsList = self.latestResultsViewModel?.responce ?? []
          group.leave()
         
         group.enter()
-                self.upcomingEventsList = self.upcomingEventsViewModel?.responce ?? []
+        self.latestResultsList = self.latestResultsViewModel?.responce ?? []
+
+        self.upcomingEventsList = self.upcomingEventsViewModel?.responce ?? []
           //      self.leagueName.title = self.upcomingEventsList[0].league_name
         group.leave()
         
         group.enter()
-                self.latestResultsList = self.latestResultsViewModel?.responce ?? []
+        
+        self.teamsList = self.latestResultsViewModel?.responce ?? []
+
         group.leave()
         
         group.notify(queue: .main)
         {
             self.teamsCollectionview.reloadData()
             self.upcomingEventsCollectionview.reloadData()
-            self.latestResultsCollectionview.reloadData()
+
         }
     }
    

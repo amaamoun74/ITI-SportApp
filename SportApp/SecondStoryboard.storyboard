@@ -106,7 +106,7 @@
                                                 </label>
                                             </subviews>
                                         </collectionViewCellContentView>
-                                        <color key="backgroundColor" red="0.11233757110000001" green="0.1567469343" blue="0.32676091270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.3641359508" green="0.78071939950000002" blue="0.56377631429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <size key="customSize" width="361" height="128"/>
                                         <connections>
                                             <outlet property="latestResultsDate" destination="c8T-Qv-l2A" id="zQh-7u-E0M"/>
@@ -206,7 +206,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" red="0.02640991111" green="0.046360017050000001" blue="0.15083498679999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.88443285230000002" green="0.97186595200000003" blue="0.92562597989999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Premier League" largeTitleDisplayMode="always" id="ZUo-iD-pcP"/>
                     <connections>

@@ -9,7 +9,7 @@ import Foundation
 class Constants{
     
     static let sharedInstance = Constants()
-    let ENDPOINT_KEY = "endpoint"
+    let ENDPOINT_KEY: String = "endpoint"
     private init(){}
     
 }

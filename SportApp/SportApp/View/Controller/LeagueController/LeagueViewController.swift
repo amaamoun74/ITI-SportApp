@@ -116,7 +116,7 @@ extension LeagueViewController {
     
     func getLeagues(){
         let endpoint = UserDefaults.standard.string(forKey: Constants.sharedInstance.ENDPOINT_KEY) ?? ""
-        allLeaguesViewodel.fetchData(endPoint: endpoint)
+        allLeaguesViewodel.fetchData(endPoint: endpoint )
         allLeaguesViewodel.bindingData = { leaguesResult, error in
             if let leagues = leaguesResult {
                 self.leagueArray = leagues.result ?? []

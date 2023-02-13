@@ -36,7 +36,7 @@
 		E21CFC3C2989A823008B5276 /* SportAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21CFC3B2989A823008B5276 /* SportAppUITests.swift */; };
 		E21CFC3E2989A823008B5276 /* SportAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21CFC3D2989A823008B5276 /* SportAppUITestsLaunchTests.swift */; };
 		E22F92E42997257E002440F7 /* SportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22F92E32997257E002440F7 /* SportViewModel.swift */; };
-		E23354B42993C88B008ED0CE /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		E23354B42993C88B008ED0CE /* (null) in Sources */ = {isa = PBXBuildFile; };
 		E265724C298F6ABF00DE4BDD /* IDataCaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = E265724B298F6ABF00DE4BDD /* IDataCaching.swift */; };
 		E265724F298F6B3000DE4BDD /* DataCaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = E265724E298F6B3000DE4BDD /* DataCaching.swift */; };
 		E2657251299004A100DE4BDD /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2657250299004A100DE4BDD /* DataManager.swift */; };
@@ -715,7 +715,7 @@
 				E2DE913B298D9C9D004BF14D /* Team.swift in Sources */,
 				E21CFC182989A820008B5276 /* AppDelegate.swift in Sources */,
 				E2DE9133298D9A2F004BF14D /* JsonResponse.swift in Sources */,
-				E23354B42993C88B008ED0CE /* BuildFile in Sources */,
+				E23354B42993C88B008ED0CE /* (null) in Sources */,
 				E2081BF129953477007291B6 /* SplashViewController.swift in Sources */,
 				4F32E69B298D2D9400AAEC79 /* LeagueDetailsVC.swift in Sources */,
 				4F1FA39B29939DED00FA9F5F /* TeamsViewModel.swift in Sources */,

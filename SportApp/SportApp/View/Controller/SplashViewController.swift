@@ -19,6 +19,7 @@ class SplashViewController: UIViewController {
             view.addSubview(animationView)
             animationView.play()
             navigationToNextScene()
+
         }
         
 

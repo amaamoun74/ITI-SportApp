@@ -7,8 +7,7 @@
 
 import Foundation
 import CoreData
+
 protocol SavingData{
-    
     func saveLeagueToFavourites(event : Event, appDelegate : AppDelegate) -> Void
-    
 }

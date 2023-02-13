@@ -24,6 +24,7 @@ class DataSaving : SavingData
         league.setValue(event.event_country_key ?? 0, forKey: "country_key")
         league.setValue(event.country_name, forKey: "country_name")
         league.setValue(event.country_logo , forKey: "country_logo")
+        league.setValue(true , forKey: "league_state")
         do{
             try managedContext.save()
             print("Saved!")
@@ -31,5 +32,27 @@ class DataSaving : SavingData
             print(error.localizedDescription)
         }
     }
-    
+    func isFavouriteLeague (event: Event, appDelegate: AppDelegate) -> Bool
+    {
+        var state : Bool?
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "League")
+        let pred = NSPredicate(format: "league_key == %@", event.league_key! )
+        fetchRequest.predicate = pred
+            do{
+                state = try  managedContext.fetch(fetchRequest)[0].value(forKey: "league_state") as? Bool
+            }catch let error{
+                print(error.localizedDescription)
+            }
+        if state == true
+        {
+            return true
+        }
+        else
+        {
+            return false
+        }
+    }
+
 }
+

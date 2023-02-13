@@ -15,18 +15,68 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="Qls-7i-VII">
+                                <rect key="frame" x="32" y="182.66666666666663" width="329" height="512"/>
+                                <color key="backgroundColor" red="0.4405129552" green="0.78066474200000002" blue="0.56015264990000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AF" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IwU-Ba-hti">
+                                <rect key="frame" x="44" y="641" width="58" height="55"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" systemColor="systemGrayColor"/>
+                                <size key="shadowOffset" width="5" height="5"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sport-365" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bQ-nH-6X2">
+                                <rect key="frame" x="92" y="642.66666666666663" width="209" height="52"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" systemColor="opaqueSeparatorColor"/>
+                                <size key="shadowOffset" width="0.0" height="1"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.4405129552" green="0.78066474200000002" blue="0.56015264990000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qls-7i-VII" secondAttribute="trailing" constant="32" id="0V8-zd-raY"/>
+                            <constraint firstItem="Qls-7i-VII" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="4bs-tK-Uhi"/>
+                            <constraint firstItem="Qls-7i-VII" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="60P-ms-fSs"/>
+                            <constraint firstItem="4bQ-nH-6X2" firstAttribute="bottom" secondItem="Qls-7i-VII" secondAttribute="bottom" id="DxI-Fl-4bJ"/>
+                            <constraint firstItem="4bQ-nH-6X2" firstAttribute="leading" secondItem="IwU-Ba-hti" secondAttribute="trailing" constant="-10" id="LKr-wg-yKY"/>
+                            <constraint firstItem="IwU-Ba-hti" firstAttribute="centerY" secondItem="4bQ-nH-6X2" secondAttribute="centerY" id="Xh0-Iz-FRL"/>
+                            <constraint firstItem="Qls-7i-VII" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="32" id="eip-lB-hER"/>
+                            <constraint firstItem="IwU-Ba-hti" firstAttribute="leading" secondItem="Qls-7i-VII" secondAttribute="leading" id="hKD-im-lKS"/>
+                            <constraint firstItem="Qls-7i-VII" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="ipa-AA-4eP"/>
+                            <constraint firstItem="Qls-7i-VII" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="vE0-UO-v4G"/>
+                            <constraint firstItem="Qls-7i-VII" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="wzz-6m-Cfe"/>
+                            <constraint firstItem="4bQ-nH-6X2" firstAttribute="trailing" secondItem="Qls-7i-VII" secondAttribute="trailing" id="yGS-MJ-pc0"/>
+                            <constraint firstItem="4bQ-nH-6X2" firstAttribute="centerX" secondItem="Qls-7i-VII" secondAttribute="centerX" id="zec-OS-iLQ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="60P-ms-fSs"/>
+                                <exclude reference="eip-lB-hER"/>
+                                <exclude reference="ipa-AA-4eP"/>
+                                <exclude reference="vE0-UO-v4G"/>
+                                <exclude reference="hKD-im-lKS"/>
+                                <exclude reference="yGS-MJ-pc0"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <size key="freeformSize" width="393" height="852"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="50.853658536585364" y="373.72881355932208"/>
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <image name="launch" width="512" height="512"/>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

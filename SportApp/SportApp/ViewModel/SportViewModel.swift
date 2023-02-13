@@ -9,6 +9,7 @@ import Foundation
 class SportViewModel {
     
     var bindingData: ( ([SportModel] ,String?) -> Void) = {_, _ in }
+   // var bindingData: (()->()) = {}
 
     var sportList : [SportModel]? {
         didSet{

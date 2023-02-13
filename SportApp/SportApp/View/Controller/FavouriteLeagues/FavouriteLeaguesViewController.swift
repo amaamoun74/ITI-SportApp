@@ -22,11 +22,12 @@ class FavouriteLeaguesViewController: UIViewController {
         savedLeagueTable.delegate = self
         savedLeagueTable.dataSource = self
         configurationNibFile()
-
-        
-        getSavedLeagues()
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        getSavedLeagues()
+    }
+    
     func configurationNibFile(){
         
         let nib = UINib(nibName: "LeagueTableViewCell", bundle: nil)
@@ -63,15 +64,15 @@ extension FavouriteLeaguesViewController:  UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete{
+
             deleteLeaueItem(leagueItem: self.savedLeagueArray[indexPath.row], indexPath: indexPath)
-        }
+        
     }
 }
 
 extension FavouriteLeaguesViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 100
         
     }
     
@@ -84,6 +85,7 @@ extension FavouriteLeaguesViewController : UITableViewDelegate{
 extension FavouriteLeaguesViewController {
     func getSavedLeagues(){
         favouriteViewModel.fetchSavedLeagues(appDelegate: self.appDelegate)
+        savedLeagueArray = favouriteViewModel.savedLeaguesArray ?? []
         favouriteViewModel.bindingData = {result , error in
             if let savedLeagues = result {
                 self.savedLeagueArray = savedLeagues
@@ -99,7 +101,26 @@ extension FavouriteLeaguesViewController {
     
     func deleteLeaueItem(leagueItem : League , indexPath: IndexPath){
         favouriteViewModel.deleteLeagueItemFromFavourites(appDeleget: self.appDelegate, leagueItem: leagueItem)
-        favouriteViewModel.bindingData = {result , error in
+        if (favouriteViewModel.error == nil)
+        {
+            DispatchQueue.main.async { [self] in
+                deletedLeagueItem = leagueItem
+                savedLeagueArray.remove(at: indexPath.row)
+                self.savedLeagueTable.deleteRows(at: [indexPath], with: .automatic)
+                // savedLeagueTable.reloadData()
+                if let name = deletedLeagueItem?.league_name
+                {
+                    let successMsg = "\(String(describing: name)) was unsaved successfully"
+                    showSuccessSnakbar(msg: successMsg , index: indexPath.row)
+                }
+            }
+        }
+            else
+            {
+                self.showErrorSnakbar(msg: favouriteViewModel.error ?? "")
+                print(favouriteViewModel.error ?? "")
+            }
+       /* favouriteViewModel.bindingData = {result , error in
             
             guard let error = error else {
                 DispatchQueue.main.async { [self] in
@@ -114,12 +135,12 @@ extension FavouriteLeaguesViewController {
             }
             self.showErrorSnakbar(msg: error.localizedDescription)
             print(error.localizedDescription)
-        }
+        }*/
     }
     private func showSuccessSnakbar(msg : String, index: Int){
         let snackbar = TTGSnackbar(
             message: msg,
-            duration: .middle,
+            duration: .long,
             actionText: "Undo",
             actionBlock: { (snackbar) in
                 print("snack bar Click action!")
@@ -156,7 +177,7 @@ extension FavouriteLeaguesViewController: CustomViewDelegate{
     }
     
     private func showErrorAlert(){
-        let alert : UIAlertController = UIAlertController(title:"Add" , message: "No network connection!", preferredStyle: .alert)
+        let alert : UIAlertController = UIAlertController(title:"Warning" , message: "No network connection!", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "try again", style: .default , handler: { action in
             self.validateNavigation()

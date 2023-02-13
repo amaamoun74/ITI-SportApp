@@ -9,6 +9,7 @@ import UIKit
 import TTGSnackbar
 class ViewController: UIViewController, UICollectionViewDelegate , UICollectionViewDataSource {
     
+    private var sportVM : SportViewModel?
     private var sportArray : [SportModel] = [SportModel]()
     @IBOutlet weak var sportsCollection: UICollectionView!
     override func viewDidLoad() {
@@ -17,6 +18,8 @@ class ViewController: UIViewController, UICollectionViewDelegate , UICollectionV
         sportsCollection.delegate = self
         sportsCollection.dataSource = self
         self.navigationItem.title = "Sports"
+        sportVM = SportViewModel()
+        
         getSports()
     }
     func getSports(){
@@ -28,7 +31,6 @@ class ViewController: UIViewController, UICollectionViewDelegate , UICollectionV
             }
     }
 }
-
 extension ViewController {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -103,4 +105,21 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
       return 15 // Keep whatever fits for you
     }
 }
+/*
+extension ViewController: IRenderView {
+    
+    func getSportList(){
+        sportVM?.getSportList()
+        sportVM?.bindingData = { () in
+            self.renderView()
+        }
+    }
 
+    func renderView() {
+        self.sportArray.append(contentsOf: sportVM?.sportList ?? [])
+        DispatchQueue.main.async {
+            self.sportsCollection.reloadData()
+        }
+    }
+}
+*/

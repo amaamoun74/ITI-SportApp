@@ -20,7 +20,7 @@ class DataCaching {
             let fetchedLeagueArray = try managedContext.fetch(fetchRequest)
             for item in (fetchedLeagueArray)
             {
-                var league = League()
+                let league = League()
                 league.league_name = item.value(forKey:"league_name") as? String
                 league.league_logo = item.value(forKey: "league_logo") as? String
                 league.league_key = item.value(forKey: "league_key") as? Int
@@ -36,19 +36,20 @@ class DataCaching {
         return leagueArray
     }
     
-    func deleteLeagueFromFavourites(appDelegate: AppDelegate, item: League){
+    func deleteLeagueFromFavourites(appDelegate: AppDelegate, item: League , complition : (Error?) -> Void?){
         let managedContext = appDelegate.persistentContainer.viewContext
         do{
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Model")
-            fetchRequest.predicate = NSPredicate(format: "league_key == %@", item.league_key!)
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "SavedLeague")
+            fetchRequest.predicate = NSPredicate(format: "league_name == %@", item.league_name! )
             let league = try managedContext.fetch(fetchRequest)
             
             managedContext.delete((league as! [NSManagedObject]).first!)
             
             try managedContext.save()
             print("league deleted")
-            
+            complition(nil)
         } catch let error as NSError{
+            complition("Error in deleting" as? Error )
             print("Error in deleting")
             print(error.localizedDescription)
         }

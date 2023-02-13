@@ -16,3 +16,14 @@ class SportModel {
         self.sportTitle = sportTitle
     }
 }
+
+class SportManager{
+    
+    static let sharedInstance = SportManager()
+    private init(){}
+    func getSportList(completion: @escaping (([SportModel]? ) -> Void) )
+    {
+        let sportArray : [SportModel] = [SportModel(sportImage: "football", sportTitle: "Football"), SportModel(sportImage: "basketball", sportTitle: "Basketball") , SportModel(sportImage: "tennis", sportTitle: "Tennis") , SportModel(sportImage: "cricket", sportTitle: "Cricket") , SportModel(sportImage: "americanFootball", sportTitle: "American Football") ,SportModel(sportImage: "hockey", sportTitle: "Hockey") , SportModel(sportImage: "baseball", sportTitle: "Baseball")]
+        completion(sportArray)
+    }
+}

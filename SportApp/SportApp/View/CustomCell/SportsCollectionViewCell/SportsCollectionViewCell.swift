@@ -11,4 +11,6 @@ class SportsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var cellImage: UIImageView!
     
     @IBOutlet weak var SportName: UILabel!
+    
+    @IBOutlet weak var sportImageFrame: UIView!
 }

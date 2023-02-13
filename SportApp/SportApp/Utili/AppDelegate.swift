@@ -61,6 +61,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return container
     }()
 
+    // MARK: - prevent rotate
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask
+    {
+        return .portrait
+    }
     // MARK: - Core Data Saving support
 
     func saveContext () {

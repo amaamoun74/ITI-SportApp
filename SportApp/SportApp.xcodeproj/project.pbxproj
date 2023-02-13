@@ -42,6 +42,7 @@
 		E2657251299004A100DE4BDD /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2657250299004A100DE4BDD /* DataManager.swift */; };
 		E26572532990072300DE4BDD /* FavouriteLeaguesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26572522990072300DE4BDD /* FavouriteLeaguesVM.swift */; };
 		E274B1A72991AECE0078E49B /* CustomViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E274B1A62991AECE0078E49B /* CustomViewDelegate.swift */; };
+		E27C14D2299AC09500AC8ADE /* IRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27C14D1299AC09500AC8ADE /* IRenderView.swift */; };
 		E2CF288B298BB1EA002EDFAE /* SportsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF288A298BB1EA002EDFAE /* SportsCollectionViewCell.swift */; };
 		E2CF2890298BB724002EDFAE /* LeagueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF288F298BB724002EDFAE /* LeagueViewController.swift */; };
 		E2CF2897298BBC21002EDFAE /* FavouriteLeaguesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF2896298BBC21002EDFAE /* FavouriteLeaguesViewController.swift */; };
@@ -126,6 +127,7 @@
 		E2657250299004A100DE4BDD /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		E26572522990072300DE4BDD /* FavouriteLeaguesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteLeaguesVM.swift; sourceTree = "<group>"; };
 		E274B1A62991AECE0078E49B /* CustomViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewDelegate.swift; sourceTree = "<group>"; };
+		E27C14D1299AC09500AC8ADE /* IRenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRenderView.swift; sourceTree = "<group>"; };
 		E2CF288A298BB1EA002EDFAE /* SportsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsCollectionViewCell.swift; sourceTree = "<group>"; };
 		E2CF288F298BB724002EDFAE /* LeagueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueViewController.swift; sourceTree = "<group>"; };
 		E2CF2896298BBC21002EDFAE /* FavouriteLeaguesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteLeaguesViewController.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				E2F76D2A298DE0D300C6C531 /* ApiServices.swift */,
 				E265724B298F6ABF00DE4BDD /* IDataCaching.swift */,
 				E274B1A62991AECE0078E49B /* CustomViewDelegate.swift */,
+				E27C14D1299AC09500AC8ADE /* IRenderView.swift */,
 			);
 			path = Contract;
 			sourceTree = "<group>";
@@ -492,7 +495,7 @@
 				E21CFC332989A823008B5276 /* Sources */,
 				E21CFC342989A823008B5276 /* Frameworks */,
 				E21CFC352989A823008B5276 /* Resources */,
-				92899BE3FEA0B3FA82DE4900 /* [CP] Embed Pods Frameworks */,
+				92899BE3FEA0B3FA82DE4900 /* [CP] Check Pods Manifest.lock */,
 			);
 			buildRules = (
 			);
@@ -595,7 +598,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SportApp/Pods-SportApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		92899BE3FEA0B3FA82DE4900 /* [CP] Embed Pods Frameworks */ = {
+		92899BE3FEA0B3FA82DE4900 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -706,6 +709,7 @@
 				E265724F298F6B3000DE4BDD /* DataCaching.swift in Sources */,
 				4F1FA39F2993A09D00FA9F5F /* TeamsNetworkManager.swift in Sources */,
 				4F3E9E0D298E60CA005546FF /* TeamCollectionViewCell.swift in Sources */,
+				E27C14D2299AC09500AC8ADE /* IRenderView.swift in Sources */,
 				E2DE913F298DA05B004BF14D /* Event.swift in Sources */,
 				E2CF288B298BB1EA002EDFAE /* SportsCollectionViewCell.swift in Sources */,
 				E20FB8072989E8EF00AF8ED0 /* LeagueTableViewCell.swift in Sources */,
@@ -720,7 +724,7 @@
 				4F32E69B298D2D9400AAEC79 /* LeagueDetailsVC.swift in Sources */,
 				4F1FA39B29939DED00FA9F5F /* TeamsViewModel.swift in Sources */,
 				4F931AD1299772B700E5DAA5 /* DataSaving.swift in Sources */,
-				E2F76D23298DDE0000C6C531 /* JsonDecoder.swift in Sources */,
+				E2F76D23298DDE0000C6C531 /* Helper.swift in Sources */,
 				E2F76D23298DDE0000C6C531 /* Helper.swift in Sources */,
 				E26572532990072300DE4BDD /* FavouriteLeaguesVM.swift in Sources */,
 				E2DE21E82997D6F600A4BCAA /* Constants.swift in Sources */,

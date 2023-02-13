@@ -14,9 +14,9 @@ class FavouriteLeaguesVM {
             bindingData(savedLeaguesArray,nil)
         }
     }
-    var error: Error? {
+    var error: String? {
         didSet {
-            bindingData(nil, error)
+            bindingData(nil, error as? Error)
         }
     }
     
@@ -31,7 +31,7 @@ class FavouriteLeaguesVM {
                 self.savedLeaguesArray = leagues
             }
             if let error = error {
-                self.error = error
+                self.error = "fetching error"
             }
             
         }
@@ -40,11 +40,9 @@ class FavouriteLeaguesVM {
     func deleteLeagueItemFromFavourites (appDeleget : AppDelegate , leagueItem: League)
     {
         dataCaching.deleteLeagueFromFavourites(appDelegate: appDeleget, item: leagueItem) { errorMsg in
-            guard let error = errorMsg else {
-                return
+            if let error = errorMsg {
+                self.error = "deleting error"
             }
-            self.error = error
-            
         }
     }
     

@@ -4,6 +4,7 @@
         <attribute name="country_key" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="country_logo" optional="YES" attributeType="String"/>
         <attribute name="country_name" optional="YES" attributeType="String"/>
+        <attribute name="endpoint" optional="YES" attributeType="String"/>
         <attribute name="league_key" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="league_logo" optional="YES" attributeType="String"/>
         <attribute name="league_name" optional="YES" attributeType="String"/>

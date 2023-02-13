@@ -81,7 +81,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Sports" image="figure.disc.sports" catalog="system" id="Pz9-Ir-kk5"/>
-                    <navigationItem key="navigationItem" title="Sports" style="browser" id="Nq5-SN-mzq"/>
+                    <navigationItem key="navigationItem" title="Sports" id="Nq5-SN-mzq"/>
                     <connections>
                         <outlet property="sportsCollection" destination="5LL-uS-dhj" id="i9F-ia-Baz"/>
                     </connections>
@@ -126,7 +126,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Favourite" image="heart.fill" catalog="system" id="Qfr-Ga-M2h"/>
-                    <navigationItem key="navigationItem" id="B1X-dw-3zQ"/>
+                    <navigationItem key="navigationItem" title="Favourite" id="B1X-dw-3zQ"/>
                     <connections>
                         <outlet property="savedLeagueTable" destination="wci-xO-nmb" id="Bxh-hK-Srp"/>
                     </connections>
@@ -145,16 +145,19 @@
             </objects>
             <point key="canvasLocation" x="3463" y="177"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Sport-->
         <scene sceneID="95A-nI-6OU">
             <objects>
                 <tabBarController id="fK4-VE-3dH" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="ghc-gi-WmE"/>
+                    <navigationItem key="navigationItem" title="Sport" largeTitleDisplayMode="always" style="editor" id="ghc-gi-WmE"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
+                    <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fb5-q5-K5N">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.88653731349999998" green="0.97203689810000005" blue="0.92607492209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="selectedImageTintColor" red="0.4405129552" green="0.78066474200000002" blue="0.56015264990000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <tabBarAppearance key="standardAppearance" backgroundEffect="systemThinMaterial"/>
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="kdF-kM-xaY"/>
@@ -184,10 +187,10 @@
             </objects>
             <point key="canvasLocation" x="358" y="-240"/>
         </scene>
-        <!--Favourite-->
+        <!--All Leagues-->
         <scene sceneID="FNA-KO-mhB">
             <objects>
-                <viewController storyboardIdentifier="AllLeagues" id="7XH-3z-QKj" customClass="LeagueViewController" customModule="SportApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AllLeagues" id="7XH-3z-QKj" userLabel="All Leagues" customClass="LeagueViewController" customModule="SportApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MPR-ZQ-OV3">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -220,7 +223,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="Fgs-KQ-BmB"/>
-                    <navigationItem key="navigationItem" title="Favourite" largeTitleDisplayMode="always" id="Sl7-zW-y8w"/>
+                    <navigationItem key="navigationItem" title="All Leagues" largeTitleDisplayMode="always" id="Sl7-zW-y8w"/>
                     <connections>
                         <outlet property="leagueTable" destination="nZ6-Nn-nXE" id="kxe-UK-HV7"/>
                     </connections>

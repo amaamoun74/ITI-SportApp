@@ -49,5 +49,8 @@ class FavouriteLeaguesVM {
     {
         dataCaching.saveLeagueToFavourites(event:eventItem , appDelegate: appDelegate)
     }
-    
+    func isFavourite(appDelegate : AppDelegate , leagueKey : Int) -> Bool
+    {
+       return dataCaching.isFavourite(leagueKey: leagueKey, appDelegate: appDelegate)
+    }
 }

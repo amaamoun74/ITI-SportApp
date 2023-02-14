@@ -77,16 +77,23 @@ class DataCaching {
     }
     func isFavouriteLeague (leagueKey: Int, appDelegate : AppDelegate) -> Bool
     {
-        var state : Bool?
+ //       var league : League = League()
+        var state : Bool = false
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "SavedLeague")
         let pred = NSPredicate(format: "league_key == %i", leagueKey )
         fetchRequest.predicate = pred
             do{
-                state = try  managedContext.fetch(fetchRequest)[0].value(forKey: "league_state") as? Bool
+                let fetchedLeagueArray = try managedContext.fetch(fetchRequest)
+                for item in (fetchedLeagueArray)
+                {
+                    state = (item.value(forKey: "league_state") as? Bool ?? false)
+                    print("\(state)")
+                }
             }catch let error{
                 print(error.localizedDescription)
             }
+        
         if state == true
         {
             return true

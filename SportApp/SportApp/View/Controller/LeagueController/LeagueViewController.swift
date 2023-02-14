@@ -146,6 +146,14 @@ extension LeagueViewController: CustomViewDelegate
 {
     func navigateToNextScene() {
         performSegue(withIdentifier: "webView", sender: self)
+
+        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "webView") {
+            let vc = segue.destination as! LeagueDetailsVC
+            //vc.leagueName = "Your Data"
+        }
     }
     
     func showErrorAlert(){

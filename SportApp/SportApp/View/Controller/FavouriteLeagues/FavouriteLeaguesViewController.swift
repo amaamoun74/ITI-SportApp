@@ -195,7 +195,7 @@ extension FavouriteLeaguesViewController: CustomViewDelegate{
         if (segue.identifier == "secondStoryboard") {
             let vc = segue.destination as! LeagueDetailsVC
             
-          //  vc.urlHelper = self.urlHelper
+            vc.urlHelper = self.urlHelper
             print (urlHelper)
             
         }

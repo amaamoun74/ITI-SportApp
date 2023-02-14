@@ -155,7 +155,7 @@ extension LeagueViewController: CustomViewDelegate
         if (segue.identifier == "webView") {
             let vc = segue.destination as! LeagueDetailsVC
            
-                //vc.urlHelper = self.urlHelper
+                vc.urlHelper = self.urlHelper
                 print (urlHelper)
             
         }

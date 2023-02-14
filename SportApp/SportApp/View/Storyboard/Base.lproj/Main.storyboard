@@ -38,15 +38,17 @@
                                                     <rect key="frame" x="8" y="2" width="161" height="125"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dNs-OV-w6B">
-                                                    <rect key="frame" x="0.0" y="0.0" width="177" height="141"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cwk-1V-t6h">
-                                                    <rect key="frame" x="0.0" y="157" width="177" height="24"/>
+                                                    <rect key="frame" x="0.0" y="151" width="177" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleAspectFit" id="dNs-OV-w6B">
+                                                    <rect key="frame" x="0.0" y="-6.0000000000009095" width="177" height="141.00000000007208"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                                    <viewLayoutGuide key="safeArea" id="usQ-iV-wAY"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Cwk-1V-t6h" firstAttribute="leading" secondItem="tsf-fj-cVg" secondAttribute="leading" id="6Tt-3z-Nvb"/>

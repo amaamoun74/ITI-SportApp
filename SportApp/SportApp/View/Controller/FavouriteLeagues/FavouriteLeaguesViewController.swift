@@ -17,6 +17,8 @@ class FavouriteLeaguesViewController: UIViewController {
     private var savedLeagueArray = [League]()
     private let favouriteViewModel = FavouriteLeaguesVM()
     private var deletedLeagueItem : League?
+    var urlHelper: URLHelper = URLHelper(endPoint: "" , leagueId: 0)
+    private var flag : Bool = true
     override func viewDidLoad() {
         super.viewDidLoad()
         savedLeagueTable.delegate = self
@@ -65,7 +67,7 @@ extension FavouriteLeaguesViewController:  UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 
-            deleteLeaueItem(leagueItem: self.savedLeagueArray[indexPath.row], indexPath: indexPath)
+            deleteLeaueItem(indexPath: indexPath)
         
     }
 }
@@ -77,6 +79,8 @@ extension FavouriteLeaguesViewController : UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        urlHelper = URLHelper(endPoint:savedLeagueArray[indexPath.row].League_endpoint , leagueId: savedLeagueArray[indexPath.row].league_key)
         validateNavigation()
     }
 }
@@ -99,25 +103,30 @@ extension FavouriteLeaguesViewController {
         }
     }
     
-    func deleteLeaueItem(leagueItem : League , indexPath: IndexPath){
-        favouriteViewModel.deleteLeagueItemFromFavourites(appDeleget: self.appDelegate, leagueItem: leagueItem)
+    func deleteLeaueItem(indexPath: IndexPath){
         if (favouriteViewModel.error == nil)
         {
             DispatchQueue.main.async { [self] in
-                deletedLeagueItem = leagueItem
+                deletedLeagueItem = self.savedLeagueArray[indexPath.row]
                 savedLeagueArray.remove(at: indexPath.row)
                 self.savedLeagueTable.deleteRows(at: [indexPath], with: .automatic)
                 // savedLeagueTable.reloadData()
                 if let name = deletedLeagueItem?.league_name
                 {
                     let successMsg = "\(String(describing: name)) was unsaved successfully"
-                    showSuccessSnakbar(msg: successMsg , index: indexPath.row)
+                    showSuccessSnakbar(msg: successMsg , index: indexPath.row )
+                    DispatchQueue.main.asyncAfter(deadline: .now()+5){
+                        if self.flag == true {
+                            self.favouriteViewModel.deleteLeagueItemFromFavourites(appDeleget: self.appDelegate, leagueKey: self.deletedLeagueItem?.league_key ?? -1)
+                        }
+                    }
+                    
                 }
             }
         }
             else
             {
-                self.showErrorSnakbar(msg: favouriteViewModel.error ?? "")
+                self.showErrorSnakbar(msg: favouriteViewModel.error?.localizedDescription  ?? "")
                 print(favouriteViewModel.error ?? "")
             }
        /* favouriteViewModel.bindingData = {result , error in
@@ -137,14 +146,18 @@ extension FavouriteLeaguesViewController {
             print(error.localizedDescription)
         }*/
     }
-    private func showSuccessSnakbar(msg : String, index: Int){
+    private func showSuccessSnakbar(msg : String, index: Int ){
         let snackbar = TTGSnackbar(
             message: msg,
             duration: .long,
             actionText: "Undo",
             actionBlock: { (snackbar) in
                 print("snack bar Click action!")
-                self.undoDeleting(index: index)
+                self.flag = false
+                if self.flag == false{
+                    self.undoDeleting(index: index)
+                }
+               
             }
         )
         snackbar.actionTextColor = UIColor.blue
@@ -152,7 +165,6 @@ extension FavouriteLeaguesViewController {
         snackbar.messageTextColor = UIColor.white
         snackbar.show()
     }
-    
     private func undoDeleting(index: Int){
         if let league = deletedLeagueItem {
             savedLeagueArray.insert(league, at: index)
@@ -175,7 +187,15 @@ extension FavouriteLeaguesViewController: CustomViewDelegate{
     func navigateToNextScene() {
         performSegue(withIdentifier: "secondStoryboard", sender: self)
     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "secondStoryboard") {
+            let vc = segue.destination as! LeagueDetailsVC
+            
+            vc.urlHelper = self.urlHelper
+            print (urlHelper)
+            
+        }
+    }
     private func showErrorAlert(){
         let alert : UIAlertController = UIAlertController(title:"Warning" , message: "No network connection!", preferredStyle: .alert)
         

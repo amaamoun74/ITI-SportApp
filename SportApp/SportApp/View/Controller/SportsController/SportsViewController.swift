@@ -64,8 +64,8 @@ extension ViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if sportArray[indexPath.row].sportImage == "football" || sportArray[indexPath.row].sportImage == "basketball" || sportArray[indexPath.row].sportImage == "tennis" || sportArray[indexPath.row].sportImage == "cricket"
         {
-            UserDefaults.standard.set(sportArray[indexPath.row].sportImage , forKey: Constants.sharedInstance.ENDPOINT_KEY)
-            navigateToNextScene()
+            //UserDefaults.standard.set(sportArray[indexPath.row].sportImage , forKey: Constants.sharedInstance.ENDPOINT_KEY)
+            navigateToNextScene(endpoint: sportArray[indexPath.row].sportImage)
         }
         else
         {
@@ -84,8 +84,10 @@ extension ViewController {
         snackbar.show()
     }
     
-    private func navigateToNextScene(){
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AllLeagues")
+    private func navigateToNextScene(endpoint: String){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AllLeagues") as? LeagueViewController
+        vc?.urlHelper.endPoint = endpoint
+        
         navigationController?.pushViewController(vc!, animated: true)
     }
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: IndexPath) -> UICollectionReusableView {

@@ -10,6 +10,7 @@ import CoreData
 protocol IDataCaching{
     
     func fetchSavedLeagues(appDelegate : AppDelegate, completion: @escaping(([League]?, Error?) -> Void ))
-    func deleteLeagueFromFavourites(appDelegate: AppDelegate, item: League , completion: (Error?) -> Void)
+    func deleteLeagueFromFavourites(appDelegate: AppDelegate, leagueKey: Int , completion: (Error?) -> Void)
+    func saveLeagueToFavourites(event : Event, appDelegate : AppDelegate) -> Void
 
 }

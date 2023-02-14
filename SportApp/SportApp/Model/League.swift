@@ -14,5 +14,5 @@ class League: Codable{
     var country_name : String?
     var league_logo : String?
     var country_logo : String?
-    
+    var League_endpoint : String?
 }

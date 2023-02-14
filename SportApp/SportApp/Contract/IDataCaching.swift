@@ -12,5 +12,6 @@ protocol IDataCaching{
     func fetchSavedLeagues(appDelegate : AppDelegate, completion: @escaping(([League]?, Error?) -> Void ))
     func deleteLeagueFromFavourites(appDelegate: AppDelegate, leagueKey: Int , completion: (Error?) -> Void)
     func saveLeagueToFavourites(event : Event, appDelegate : AppDelegate) -> Void
+    func isFavourite(leagueKey: Int, appDelegate : AppDelegate) -> Bool
 
 }

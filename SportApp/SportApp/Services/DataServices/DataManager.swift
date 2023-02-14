@@ -23,8 +23,10 @@ class DataManager:IDataCaching {
             
         }
     }
-    
-    
+    func isFavourite (leagueKey: Int, appDelegate : AppDelegate) -> Bool
+    {
+        dbManger.isFavouriteLeague(leagueKey: leagueKey, appDelegate: appDelegate)
+    }
     
     
 }

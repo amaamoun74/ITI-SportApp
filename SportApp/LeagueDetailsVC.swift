@@ -10,21 +10,21 @@ import Kingfisher
 
 class LeagueDetailsVC: UIViewController {
     
-   private let group = DispatchGroup()
-    var leagueState : Bool = false
-    var flag : Bool = false
-    var leagueKey : Int?
-    var teamsList = Array<Team>()
-    var upcomingEventsList = Array<Event>()
-    var latestResultsList = Array<Event>()
-    var upcomingEventsViewModel : EventsViewModel?
-    var latestResultsViewModel : EventsViewModel?
-    var teamsViewModel : TeamsViewModel?
-    var dataSavingViewModel : DataSavingViewModel?
-    let endpoint = UserDefaults.standard.string(forKey: Constants.sharedInstance.ENDPOINT_KEY) ?? ""
-
-    @IBOutlet weak var leagueName: UINavigationItem!
+    private let group = DispatchGroup()
+    private var leagueState : Bool = false
+    private var flag : Bool = false
+    private var teamsList = Array<Team>()
+    private var upcomingEventsList = Array<Event>()
+    private var latestResultsList = Array<Event>()
+    private var upcomingEventsViewModel : EventsViewModel?
+    private var latestResultsViewModel : EventsViewModel?
+    private var teamsViewModel : TeamsViewModel?
+    private var dataSavingViewModel : FavouriteLeaguesVM?
+    var urlHelper: URLHelper = URLHelper(endPoint: "" , leagueId: 0)
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    private var myEvent : Event = Event()
     
+    @IBOutlet weak var leagueName: UINavigationItem!
     @IBOutlet weak var upcomingEvents: UILabel!
     @IBOutlet weak var latestResults: UILabel!
     @IBOutlet weak var favHeart: UIButton!
@@ -32,9 +32,9 @@ class LeagueDetailsVC: UIViewController {
         if flag == false && leagueState == false{
             favHeart.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             flag = true
-            
-            dataSavingViewModel = DataSavingViewModel()
-            dataSavingViewModel?.dataSaving.saveLeagueToFavourites(event: upcomingEventsList[0], appDelegate: AppDelegate())
+            self.myEvent.event_endPoint = self.urlHelper.endPoint ?? "football"
+            dataSavingViewModel = FavouriteLeaguesVM()
+            dataSavingViewModel?.saveLeague(appDelegate: appDelegate, eventItem: myEvent)
         }
         else if flag == true
         {
@@ -61,14 +61,13 @@ class LeagueDetailsVC: UIViewController {
         latestResultsViewModel = EventsViewModel()
         teamsViewModel = TeamsViewModel()
         self.workingWithDispatchGroup()
-        //teamsCollectionview.backgroundColor = UIColor.clear.withAlphaComponent(0)
         self.upcomingEvents.font = UIFont.boldSystemFont(ofSize: 17)
         self.latestResults.font = UIFont.boldSystemFont(ofSize: 17)
        
     }
-    override func viewWillAppear(_ animated: Bool) {
-        dataSavingViewModel = DataSavingViewModel()
-        leagueState = ((dataSavingViewModel?.dataSaving.isFavouriteLeague(leagueKey: 205, appDelegate: AppDelegate())) ?? false)
+     override func viewWillAppear(_ animated: Bool) {
+        dataSavingViewModel = FavouriteLeaguesVM()
+         leagueState = ((dataSavingViewModel?.isFavourite(appDelegate: appDelegate, leagueKey: urlHelper.leagueId ?? 0)) == true)
         if leagueState == true
         {
            favHeart.setImage(UIImage(systemName: "heart.fill"), for: .normal)
@@ -132,6 +131,8 @@ extension LeagueDetailsVC : UICollectionViewDataSource
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "upcomingEventsCell", for: indexPath) as! LeagueCollectionViewCell
             cell.layer.masksToBounds = true
             cell.layer.cornerRadius = 20
+       //     if urlHelper.endPoint == "tennis"
+                
             cell.upcomingEventHomeTeamImage.kf.setImage(with: URL(string: upcomingEventsList[indexPath.row].home_team_logo ?? " "),placeholder: UIImage(named: "P"))
             cell.upcomingEventAwayTeamImage.kf.setImage(with: URL(string: upcomingEventsList[indexPath.row].away_team_logo ?? " "),placeholder: UIImage(named: "P"))
             cell.upcomingEventFirstTeam.text = upcomingEventsList[indexPath.row].event_home_team
@@ -205,21 +206,22 @@ extension LeagueDetailsVC
     func workingWithDispatchGroup()
     {
         group.enter()
-        self.upcomingEventsViewModel?.getEvents(endPoint: endpoint, leagueId: 205, startDate: "2023-01-18", endDate: "2024-01-25")
+        self.upcomingEventsViewModel?.getEvents(endPoint: urlHelper.endPoint ?? "", leagueId: urlHelper.leagueId ?? 0, startDate: "2023-01-18", endDate: "2024-01-25")
         self.upcomingEventsViewModel?.bindResultToEvents = { () in
             self.upcomingEventsList = self.upcomingEventsViewModel?.responce ?? []
-            self.leagueName.title = self.upcomingEventsList[0].league_name
+           // self.myEvent = self.upcomingEventsViewModel?.responce[0] ?? Event()
+         //   self.leagueName.title = self.upcomingEventsList[0].league_name
             self.group.leave()
 }
         group.enter()
-        self.latestResultsViewModel?.getEvents(endPoint: endpoint, leagueId: 205, startDate:  "2022-01-18", endDate: "2023-01-25")
+        self.latestResultsViewModel?.getEvents(endPoint: urlHelper.endPoint ?? "", leagueId: urlHelper.leagueId ?? 0, startDate: "2022-01-18", endDate: "2023-01-25")
         self.latestResultsViewModel?.bindResultToEvents = { () in
             self.latestResultsList = self.latestResultsViewModel?.responce ?? []
             self.group.leave()
     }
         group.enter()
-        teamsViewModel?.getTeams()
-        self.teamsViewModel?.bindResultToTeamDetailsVC = { ( ) in
+        teamsViewModel?.getTeams(endPoint: urlHelper.endPoint ?? "", leagueId: urlHelper.leagueId ?? 0)
+            self.teamsViewModel?.bindResultToTeamDetailsVC = { ( ) in
             self.teamsList = self.teamsViewModel?.responce ?? []
             self.group.leave()
 

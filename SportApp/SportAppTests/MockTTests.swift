@@ -55,4 +55,34 @@ final class MockTTests: XCTestCase {
             XCTAssertNotNil(league , "API Error")
         }
     }
+    
+    func testTeamMock(){
+        Mocking.sharedInstance.fetchTeamData { result, error in
+            guard let league = result else {
+                XCTAssertNil(result)
+                return
+            }
+            XCTAssertNotNil(league , "API Error")
+        }
+    }
+    
+    func testPlayerMock(){
+        Mocking.sharedInstance.fetchPlayerData { result, error in
+            guard let league = result else {
+                XCTAssertNil(result)
+                return
+            }
+            XCTAssertNotNil(league , "API Error")
+        }
+    }
+    
+    func testCoachMock(){
+        Mocking.sharedInstance.fetchCoachData { result, error in
+            guard let league = result else {
+                XCTAssertNil(result)
+                return
+            }
+            XCTAssertNotNil(league , "API Error")
+        }
+    }
 }

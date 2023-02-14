@@ -26,13 +26,33 @@ final class MockTTests: XCTestCase {
     }
 
 
-    func testLeagueMock() {
-        Mocking.sharedInstance.fetchMovieData(compilationHandler: { result, error in
+    func testJsonMock() {
+        Mocking.sharedInstance.fetchJsonData { result, error in
             guard let league = result else {
                 XCTAssertNil(result)
                 return
             }
             XCTAssertNotNil(league , "API Error")
-        })
+        }
+    }
+    
+    func testLeagueMock(){
+        Mocking.sharedInstance.fetchLeagueData { result, error in
+            guard let league = result else {
+                XCTAssertNil(result)
+                return
+            }
+            XCTAssertNotNil(league , "API Error")
+        }
+    }
+    
+    func testEventMock(){
+        Mocking.sharedInstance.fetchEventData{ result, error in
+            guard let league = result else {
+                XCTAssertNil(result)
+                return
+            }
+            XCTAssertNotNil(league , "API Error")
+        }
     }
 }

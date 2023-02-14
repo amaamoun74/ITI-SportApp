@@ -1,14 +1,13 @@
 //
-//  SportAppTests.swift
+//  MockTTests.swift
 //  SportAppTests
 //
-//  Created by ahmed on 31/01/2023.
+//  Created by ahmed on 13/02/2023.
 //
 
 import XCTest
 @testable import SportApp
-
-final class SportAppTests: XCTestCase {
+final class MockTTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -26,6 +25,15 @@ final class SportAppTests: XCTestCase {
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
     }
 
-    
 
+    func testLeagueMock() {
+        Mocking.fetchMovieData { result, error in
+            
+            guard let league = result else {
+                XCTFail()
+                return
+            }
+            XCTAssertNotNil(league , "API Error")
+        }
+    }
 }

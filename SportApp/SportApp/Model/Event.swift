@@ -37,6 +37,6 @@ class Event: Codable {
     var fk_stage_key:Double?
     var stage_name:String?
     var league_group: String?
-             
+    var event_endPoint: String?
     
 }

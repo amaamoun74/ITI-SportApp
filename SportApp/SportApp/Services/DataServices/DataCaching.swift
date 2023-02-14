@@ -27,7 +27,7 @@ class DataCaching {
                 league.country_key = item.value(forKey: "country_key") as? Int
                 league.country_name = item.value(forKey: "country_name") as? String
                 league.country_logo = item.value(forKey: "country_logo") as? String
-                
+                league.League_endpoint = item.value(forKey: "endpoint") as? String
                 leagueArray.append(league)
             }
         } catch let error {
@@ -36,11 +36,11 @@ class DataCaching {
         return leagueArray
     }
     
-    func deleteLeagueFromFavourites(appDelegate: AppDelegate, item: League , complition : (Error?) -> Void?){
+    func deleteLeagueFromFavourites(appDelegate: AppDelegate, league_key: Int , complition : (Error?) -> Void?){
         let managedContext = appDelegate.persistentContainer.viewContext
         do{
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "SavedLeague")
-            fetchRequest.predicate = NSPredicate(format: "league_name == %@", item.league_name! )
+            fetchRequest.predicate = NSPredicate(format: "league_key == %i", league_key )
             let league = try managedContext.fetch(fetchRequest)
             
             managedContext.delete((league as! [NSManagedObject]).first!)
@@ -54,4 +54,48 @@ class DataCaching {
             print(error.localizedDescription)
         }
     }
+    
+    func saveLeagueToFavourites(event : Event, appDelegate : AppDelegate) -> Void
+    {
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "SavedLeague", in: managedContext)
+        let league = NSManagedObject(entity: entity!, insertInto: managedContext)
+        league.setValue(event.league_key ?? 0, forKey: "league_key")
+        league.setValue(event.league_name, forKey: "league_name")
+        league.setValue(event.league_logo , forKey: "league_logo")
+        league.setValue(event.event_country_key ?? 0, forKey: "country_key")
+        league.setValue(event.country_name, forKey: "country_name")
+        league.setValue(event.country_logo , forKey: "country_logo")
+        league.setValue(event.event_endPoint, forKey: "endpoint")
+        league.setValue(true , forKey: "league_state")
+        do{
+            try managedContext.save()
+            print("Saved!")
+        }catch let error{
+            print(error.localizedDescription)
+        }
+    }
+    func isFavouriteLeague (leagueKey: Int, appDelegate : AppDelegate) -> Bool
+    {
+        var state : Bool?
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "SavedLeague")
+        let pred = NSPredicate(format: "league_key == %i", leagueKey )
+        fetchRequest.predicate = pred
+            do{
+                state = try  managedContext.fetch(fetchRequest)[0].value(forKey: "league_state") as? Bool
+            }catch let error{
+                print(error.localizedDescription)
+            }
+        if state == true
+        {
+            return true
+        }
+        else
+        {
+            return false
+        }
+    }
+
+    
 }

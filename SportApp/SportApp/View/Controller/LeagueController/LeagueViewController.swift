@@ -16,12 +16,12 @@ class LeagueViewController: UIViewController{
     var limit = 10
     var paginationLeagues: [League] = []
     var indicator: UIActivityIndicatorView?
-
+    var urlHelper: URLHelper = URLHelper(endPoint: "" , leagueId: 0)
     override func viewDidLoad() {
         super.viewDidLoad()
         tableConfiguration()
         handleDataFetching()
-        
+        print(urlHelper)
         indicator = UIActivityIndicatorView(style: .large)
         indicator?.center = self.view.center
         indicator?.startAnimating()
@@ -87,6 +87,7 @@ extension LeagueViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        urlHelper.leagueId = leagueArray[indexPath.row].league_key
         navigateToNextScene()
     }
     
@@ -115,7 +116,7 @@ extension LeagueViewController {
     }
     
     func getLeagues(){
-        let endpoint = UserDefaults.standard.string(forKey: Constants.sharedInstance.ENDPOINT_KEY) ?? ""
+        let endpoint = urlHelper.endPoint ?? ""
         allLeaguesViewodel.fetchData(endPoint: endpoint )
         allLeaguesViewodel.bindingData = { leaguesResult, error in
             if let leagues = leaguesResult {
@@ -127,6 +128,7 @@ extension LeagueViewController {
                 }
                 DispatchQueue.main.async {
                     if let ind = self.indicator{
+                       // ind.center = self.leagueTable.anchorPoint
                            ind.stopAnimating()
                        }
                     self.leagueTable.reloadData()
@@ -146,6 +148,17 @@ extension LeagueViewController: CustomViewDelegate
 {
     func navigateToNextScene() {
         performSegue(withIdentifier: "webView", sender: self)
+
+        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "webView") {
+            let vc = segue.destination as! LeagueDetailsVC
+           
+                vc.urlHelper = self.urlHelper
+                print (urlHelper)
+            
+        }
     }
     
     func showErrorAlert(){

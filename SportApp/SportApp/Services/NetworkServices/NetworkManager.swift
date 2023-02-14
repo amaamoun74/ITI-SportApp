@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import Alamofire
 class NetworkManager: ApiService {
-    func getAllLeagues(endPoint: String, completion: @escaping ((JsonResponse<League>?, Error?) -> Void)) {
+ /*   func getAllLeagues(endPoint: String, completion: @escaping ((JsonResponse<League>?, Error?) -> Void)) {
         if let  url = URL(string: UrlServices(endPoint: endPoint).url) {
             print("ok8ij7huygtfrgtyhuygtfghyhg")
 
@@ -23,5 +24,17 @@ class NetworkManager: ApiService {
             }.resume()
         }
         
+    }*/
+    
+    func getAllLeagues(endPoint: String, completion: @escaping ((JsonResponse<League>?, Error?) -> Void)) {
+        let  request = AF.request( UrlServices(endPoint: endPoint).url)
+        request.responseDecodable (of: JsonResponse<League>.self) {(olddata) in
+            guard let data = olddata.value
+            else{
+                completion(nil , "Fetching Leagues error" as? any Error)
+                return
+            }
+            completion(data , nil)
+        }
     }
 }

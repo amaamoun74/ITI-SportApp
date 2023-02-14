@@ -210,6 +210,7 @@ extension LeagueDetailsVC
         self.upcomingEventsViewModel?.bindResultToEvents = { () in
             self.upcomingEventsList = self.upcomingEventsViewModel?.responce ?? []
            // self.myEvent = self.upcomingEventsViewModel?.responce[0] ?? Event()
+            self.leagueName.title = self.upcomingEventsList[0].league_name
             self.group.leave()
 }
         group.enter()

@@ -27,27 +27,6 @@ class EventsNetworkManager : APIServiceForEvent
             }
             handeler(data)
         }
-        
-       /* let url = URL(string: eventURL)
-        guard let myurl = url else{
-            return
-        }
-        let request = URLRequest(url: myurl)
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: request) { dataaa, response, error in
-            guard let data = dataaa else{
-               handeler(nil)
-               return
-                 }
-            do{
-                let re = try JSONDecoder().decode(EventResponse.self, from: data)
-                handeler(re)
-                
-            }catch _ {
-                handeler(nil)
-            }
-        }
-        task.resume()*/
     }
 }
     

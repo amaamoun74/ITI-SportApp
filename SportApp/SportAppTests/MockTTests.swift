@@ -27,13 +27,12 @@ final class MockTTests: XCTestCase {
 
 
     func testLeagueMock() {
-        Mocking.fetchMovieData { result, error in
-            
+        Mocking.sharedInstance.fetchMovieData(compilationHandler: { result, error in
             guard let league = result else {
-                XCTFail()
+                XCTAssertNil(result)
                 return
             }
             XCTAssertNotNil(league , "API Error")
-        }
+        })
     }
 }

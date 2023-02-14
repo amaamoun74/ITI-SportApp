@@ -86,21 +86,25 @@ extension FavouriteLeaguesViewController : UITableViewDelegate{
 }
 
 
-extension FavouriteLeaguesViewController {
+extension FavouriteLeaguesViewController : IRenderView {
+    
     func getSavedLeagues(){
         favouriteViewModel.fetchSavedLeagues(appDelegate: self.appDelegate)
         savedLeagueArray = favouriteViewModel.savedLeaguesArray ?? []
         favouriteViewModel.bindingData = {result , error in
-            if let savedLeagues = result {
-                self.savedLeagueArray = savedLeagues
-                DispatchQueue.main.async {
-                    self.savedLeagueTable.reloadData()
-                }
+            if result != nil {
+                self.renderView()
             }
             if let error = error {
                 print(error.localizedDescription)
             }
         }
+    }
+    func renderView(){
+        self.savedLeagueArray  = self.favouriteViewModel.savedLeaguesArray ?? []
+            DispatchQueue.main.async {
+                self.savedLeagueTable.reloadData()
+            }
     }
     
     func deleteLeaueItem(indexPath: IndexPath){
@@ -191,7 +195,7 @@ extension FavouriteLeaguesViewController: CustomViewDelegate{
         if (segue.identifier == "secondStoryboard") {
             let vc = segue.destination as! LeagueDetailsVC
             
-            vc.urlHelper = self.urlHelper
+          //  vc.urlHelper = self.urlHelper
             print (urlHelper)
             
         }

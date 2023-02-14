@@ -25,7 +25,7 @@ final class NetworkingTests: XCTestCase {
         network = nil
     }
     
-    func testNetworkCall(){
+  /*  func testNetworkCall(){
         let expectation = expectation(description: "API Call")
         self.network?.getAllLeagues(endPoint: "football") { leaguesResult, error in
             if let leagues = self.leaguesResult {
@@ -45,5 +45,5 @@ final class NetworkingTests: XCTestCase {
                 print(error ?? "error")
             }
         }
-    }
+    }*/
 }

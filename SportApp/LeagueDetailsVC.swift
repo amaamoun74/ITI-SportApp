@@ -208,7 +208,7 @@ extension LeagueDetailsVC
         self.upcomingEventsViewModel?.getEvents(endPoint: endpoint, leagueId: 205, startDate: "2023-01-18", endDate: "2024-01-25")
         self.upcomingEventsViewModel?.bindResultToEvents = { () in
             self.upcomingEventsList = self.upcomingEventsViewModel?.responce ?? []
-            self.leagueName.title = self.upcomingEventsList[0].league_name
+            //self.leagueName.title = self.upcomingEventsList[0].league_name
             self.group.leave()
 }
         group.enter()

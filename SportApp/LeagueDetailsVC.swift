@@ -62,8 +62,8 @@ class LeagueDetailsVC: UIViewController {
         teamsViewModel = TeamsViewModel()
         self.workingWithDispatchGroup()
         //teamsCollectionview.backgroundColor = UIColor.clear.withAlphaComponent(0)
-        self.upcomingEvents.font = UIFont.boldSystemFont(ofSize: 20)
-        self.latestResults.font = UIFont.boldSystemFont(ofSize: 20)
+        self.upcomingEvents.font = UIFont.boldSystemFont(ofSize: 17)
+        self.latestResults.font = UIFont.boldSystemFont(ofSize: 17)
        
     }
     override func viewWillAppear(_ animated: Bool) {

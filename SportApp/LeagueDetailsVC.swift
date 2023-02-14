@@ -9,10 +9,11 @@ import UIKit
 import Kingfisher
 
 class LeagueDetailsVC: UIViewController {
- 
-    let group = DispatchGroup()
+    
+   private let group = DispatchGroup()
     var leagueState : Bool = false
     var flag : Bool = false
+    var leagueKey : Int?
     var teamsList = Array<Team>()
     var upcomingEventsList = Array<Event>()
     var latestResultsList = Array<Event>()
@@ -20,11 +21,15 @@ class LeagueDetailsVC: UIViewController {
     var latestResultsViewModel : EventsViewModel?
     var teamsViewModel : TeamsViewModel?
     var dataSavingViewModel : DataSavingViewModel?
-    
+    let endpoint = UserDefaults.standard.string(forKey: Constants.sharedInstance.ENDPOINT_KEY) ?? ""
+
     @IBOutlet weak var leagueName: UINavigationItem!
+    
+    @IBOutlet weak var upcomingEvents: UILabel!
+    @IBOutlet weak var latestResults: UILabel!
     @IBOutlet weak var favHeart: UIButton!
     @IBAction func addLeagueToFavourites(_ sender: Any) {
-        if flag == false{
+        if flag == false && leagueState == false{
             favHeart.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             flag = true
             
@@ -56,17 +61,20 @@ class LeagueDetailsVC: UIViewController {
         latestResultsViewModel = EventsViewModel()
         teamsViewModel = TeamsViewModel()
         self.workingWithDispatchGroup()
-        
-      /*  dataSavingViewModel = DataSavingViewModel()
-        leagueState = ((dataSavingViewModel?.dataSaving.isFavouriteLeague(event: upcomingEventsList[0], appDelegate: AppDelegate())) != nil)
+        //teamsCollectionview.backgroundColor = UIColor.clear.withAlphaComponent(0)
+        self.upcomingEvents.font = UIFont.boldSystemFont(ofSize: 20)
+        self.latestResults.font = UIFont.boldSystemFont(ofSize: 20)
+       
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        dataSavingViewModel = DataSavingViewModel()
+        leagueState = ((dataSavingViewModel?.dataSaving.isFavouriteLeague(leagueKey: 205, appDelegate: AppDelegate())) ?? false)
         if leagueState == true
         {
-            favHeart.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        }*/
-        
+           favHeart.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        }
     }
 }
-
 
 extension LeagueDetailsVC : UICollectionViewDataSource
 {
@@ -115,6 +123,8 @@ extension LeagueDetailsVC : UICollectionViewDataSource
             cell.teamImage.kf.setImage(with: URL(string: teamsList[indexPath.row].team_logo ?? " "),placeholder: UIImage(named: "P"))
             cell.teamImage.clipsToBounds = true
             cell.teamImage.layer.cornerRadius = cell.teamImage.frame.size.width / 2
+            cell.backgroundColor = UIColor.clear.withAlphaComponent(0)
+
             return cell
         }
         else if (collectionView == upcomingEventsCollectionview)
@@ -169,39 +179,6 @@ extension LeagueDetailsVC : UICollectionViewDelegate
         }
     }
 }
-extension LeagueDetailsVC
-{
-    func workingWithDispatchGroup()
-    {
-        group.enter()
-        self.upcomingEventsViewModel?.getEvents(startDate: "2023-01-18", endDate: "2024-01-25")
-        self.upcomingEventsViewModel?.bindResultToEvents = { () in
-            self.upcomingEventsList = self.upcomingEventsViewModel?.responce ?? []
-            self.leagueName.title = self.upcomingEventsList[0].league_name
-            self.group.leave()
-}
-        group.enter()
-        self.latestResultsViewModel?.getEvents(startDate:  "2022-01-18", endDate: "2023-01-25")
-        self.latestResultsViewModel?.bindResultToEvents = { () in
-            self.latestResultsList = self.latestResultsViewModel?.responce ?? []
-//            self.leagueName.title = self.upcomingEventsList[0].league_name
-            self.group.leave()
-    }
-        group.enter()
-        teamsViewModel?.getTeams()
-        self.teamsViewModel?.bindResultToTeamDetailsVC = { ( ) in
-            self.teamsList = self.teamsViewModel?.responce ?? []
-            self.group.leave()
-
- }
-        group.notify(queue: .main)
-        {
-            self.teamsCollectionview.reloadData()
-            self.upcomingEventsCollectionview.reloadData()
-            self.latestResultsCollectionview.reloadData()
-        }
-    }
-}
 extension LeagueDetailsVC : UICollectionViewDelegateFlowLayout
 {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -220,6 +197,38 @@ extension LeagueDetailsVC : UICollectionViewDelegateFlowLayout
         else
         {
             return CGSize(width: (UIScreen.main.bounds.size.width)-20,height: (UIScreen.main.bounds.size.height)-50)
+        }
+    }
+}
+extension LeagueDetailsVC
+{
+    func workingWithDispatchGroup()
+    {
+        group.enter()
+        self.upcomingEventsViewModel?.getEvents(endPoint: endpoint, leagueId: 205, startDate: "2023-01-18", endDate: "2024-01-25")
+        self.upcomingEventsViewModel?.bindResultToEvents = { () in
+            self.upcomingEventsList = self.upcomingEventsViewModel?.responce ?? []
+            self.leagueName.title = self.upcomingEventsList[0].league_name
+            self.group.leave()
+}
+        group.enter()
+        self.latestResultsViewModel?.getEvents(endPoint: endpoint, leagueId: 205, startDate:  "2022-01-18", endDate: "2023-01-25")
+        self.latestResultsViewModel?.bindResultToEvents = { () in
+            self.latestResultsList = self.latestResultsViewModel?.responce ?? []
+            self.group.leave()
+    }
+        group.enter()
+        teamsViewModel?.getTeams()
+        self.teamsViewModel?.bindResultToTeamDetailsVC = { ( ) in
+            self.teamsList = self.teamsViewModel?.responce ?? []
+            self.group.leave()
+
+ }
+        group.notify(queue: .main)
+        {
+            self.teamsCollectionview.reloadData()
+            self.upcomingEventsCollectionview.reloadData()
+            self.latestResultsCollectionview.reloadData()
         }
     }
 }

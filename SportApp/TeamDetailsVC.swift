@@ -16,7 +16,8 @@ class TeamDetailsVC: UIViewController, UICollectionViewDelegate {
     @IBOutlet weak var teamName: UILabel!
     @IBOutlet weak var teamImage: UIImageView!
     @IBOutlet weak var coachName: UILabel!
-        
+    @IBOutlet weak var players: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         playersCollectionview.delegate = self
@@ -30,7 +31,12 @@ class TeamDetailsVC: UIViewController, UICollectionViewDelegate {
         self.teamName.font = UIFont.boldSystemFont(ofSize: 32)
         self.teamName.text = self.team.team_name
         self.teamImage.kf.setImage(with: URL(string: self.team.team_logo ?? " "),placeholder: UIImage(named: "P"))
-        self.coachName.text = self.team.coaches?[0].coach_name
+        self.coachName.text = "Coach Name : ".appending(self.team.coaches?[0].coach_name ?? "")
+        self.coachName.layer.masksToBounds = true
+        self.coachName.layer.cornerRadius = 12
+        self.players.layer.masksToBounds = true
+        self.players.layer.cornerRadius = 12
+
     //    self.teamDetailsScroll.contentSize = CGSize(width: UIScreen.main.bounds.size.width, height: (UIScreen.main.bounds.size.height)*2 )
         }
 }
@@ -51,6 +57,14 @@ extension TeamDetailsVC : UICollectionViewDataSource
    //     cell.layer.borderColor = (UIColor(named: "Font") as! CGColor)
    //     cell.layer.borderWidth = 5
         cell.playerName.text = team.players?[indexPath.row].player_name
+        cell.playerName.font = UIFont.boldSystemFont(ofSize: 24)
+        cell.playerNumber.text = team.players?[indexPath.row].player_number
+        cell.playerNumber.font = UIFont.boldSystemFont(ofSize: 32)
+        cell.playerType.text = team.players?[indexPath.row].player_type
+        cell.playerAge.text = team.players?[indexPath.row].player_age?.appending(" years")
+        
+        cell.playerGoals.text = team.players?[indexPath.row].player_goals?.appending(" goals")
+
         cell.playerImage.kf.setImage(with: URL(string: team.players?[indexPath.row].player_image ?? " "),placeholder: UIImage(named: "P"))
         cell.playerImage.clipsToBounds = true
         cell.playerImage.layer.cornerRadius = cell.playerImage.frame.size.width / 2
@@ -62,6 +76,6 @@ extension TeamDetailsVC : UICollectionViewDataSource
 extension TeamDetailsVC : UICollectionViewDelegateFlowLayout
 {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (UIScreen.main.bounds.size.width/2.2)-13,height: (UIScreen.main.bounds.size.height/4.6)-50)
+        return CGSize(width: (UIScreen.main.bounds.size.width)-40,height: (UIScreen.main.bounds.size.height/4)-50)
     }
 }

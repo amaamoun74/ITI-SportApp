@@ -32,12 +32,12 @@ class DataSaving : SavingData
             print(error.localizedDescription)
         }
     }
-    func isFavouriteLeague (event: Event, appDelegate: AppDelegate) -> Bool
+    func isFavouriteLeague (leagueKey: Int, appDelegate : AppDelegate) -> Bool
     {
         var state : Bool?
         let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "League")
-        let pred = NSPredicate(format: "league_key == %@", event.league_key! )
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "SavedLeague")
+        let pred = NSPredicate(format: "league_key == %i", leagueKey )
         fetchRequest.predicate = pred
             do{
                 state = try  managedContext.fetch(fetchRequest)[0].value(forKey: "league_state") as? Bool

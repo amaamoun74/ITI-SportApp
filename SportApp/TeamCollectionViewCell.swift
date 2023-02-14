@@ -13,4 +13,11 @@ class TeamCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var playerName: UILabel!
     
+    @IBOutlet weak var playerNumber: UILabel!
+    
+    @IBOutlet weak var playerType: UILabel!
+    
+    @IBOutlet weak var playerAge: UILabel!
+    
+    @IBOutlet weak var playerGoals: UILabel!
 }

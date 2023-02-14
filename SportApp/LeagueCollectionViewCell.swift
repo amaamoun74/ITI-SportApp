@@ -30,4 +30,12 @@ class LeagueCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var latestResultsDate: UILabel!
     
     @IBOutlet weak var latestResultsTime: UILabel!
+    
+    @IBOutlet weak var latestResultHomeTeamImage: UIImageView!
+    
+    @IBOutlet weak var latestResultAwayTeamImage: UIImageView!
+    
+    @IBOutlet weak var upcomingEventHomeTeamImage: UIImageView!
+    
+    @IBOutlet weak var upcomingEventAwayTeamImage: UIImageView!
 }

@@ -1,11 +1,11 @@
 # ITI-SportApp
 ## **Description** 
 ### The App is a sports application that:
-    -Lists all global sports.
-    -Lists all leagues for a particular sport.
-    -Lists all teams players. 
-    -Tracks the upcoming events and the latest events.
-    -saving leagues to favourites.
+    - Lists all global sports.
+    - Lists all leagues for a particular sport.
+    - Lists all teams players. 
+    - Tracks the upcoming events and the latest events.
+    - Saving leagues to favourites.
 
 ## **Tools used**
     - MVVM Architectural Pattern.
